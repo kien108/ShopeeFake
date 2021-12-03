@@ -42,7 +42,7 @@ public class CommentServlet extends HttpServlet {
                 CommentUtil cmUtil = new CommentUtil();
                 cmUtil.createCmt(product, account, cmt);
                 session.removeAttribute("pTempId");
-                request.getRequestDispatcher("/bill").forward(request, response);
+
             }
         }
     }
