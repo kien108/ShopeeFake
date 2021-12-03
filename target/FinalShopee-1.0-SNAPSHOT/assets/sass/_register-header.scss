@@ -1,0 +1,42 @@
+.header {
+    height: 84px !important;
+    background-color: $white-color;
+    background-image: none !important;
+
+    .container {
+        height: 100%;
+    }
+}
+
+.header__logo-wrap {
+    background-color: $white-color;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    &__logo-img {
+        width: 160px;
+        height: 42px;
+        position: relative;
+        top: -5px;
+    }
+
+    &__title {
+        font-size: 2.4rem;
+        color: #222;
+        font-weight: $regular-size;
+        line-height: 84px;
+        letter-spacing: -0.3px;
+        margin-top: 3px;
+    }
+
+    &__support {
+        margin-left: auto;
+        font-size: $text;
+        color: $primary-color;
+        font-weight: $medium-size;
+        letter-spacing: -0.3px;
+    }
+}

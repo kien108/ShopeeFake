@@ -1,0 +1,50 @@
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+:root {
+    --text-color: #ee4d2d !important;
+}
+
+.btn__add {
+    background-color: rgba(255,87,34,0.1) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--text-color) !important;
+    font-size: 1.4rem !important;
+    padding: 23px 12px !important;
+    min-width: 180px !important;
+    letter-spacing: -0.5px !important;
+    font-weight: 500 !important;
+}
+
+.btn__add:hover {
+    opacity: .8 !important;
+}
+
+.btn__add-icon {
+    margin-right: 10px !important;
+}
+
+.btn__buy {
+    min-width: 180px !important;
+    padding: 24px 12px !important;
+    margin-left: 16px !important;
+}
+
+.product__body-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.product__body-right {
+    margin-bottom: 503px;
+}
+
+.product__container {
+    padding: 16px 32px 32px 16px !important;
+    display: flex !important;
+    background-color: #fff;
+    border-radius: 3px;
+}

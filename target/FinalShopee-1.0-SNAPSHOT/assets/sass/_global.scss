@@ -1,0 +1,258 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    line-height: 1;
+    font-family: $font;
+    color: $text-color;
+    font-weight: $regular-size;
+    background-color: white;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-family: $font;
+}
+
+.container {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+}
+
+/* modal */
+// .modal {
+//     position: fixed;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     display: none;
+//     animation: fadeIn linear 0.1s;
+// }
+
+// .modal.open {
+//     display: flex;
+// }
+
+// .modal__overlay {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.4);
+// }
+
+// .modal_body {
+//     --growth-from: 0.7;
+//     --growth-to: 1;
+//     margin: auto;
+//     position: relative;
+//     z-index: 1;
+//     animation: growth linear 0.2s;
+// }
+
+/* button style */
+.btn {
+    min-width: 124px;
+    height: 34px;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.4rem;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6rem;
+}
+
+.btn.btn--normal:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn.btn--primary {
+    background-color: $primary-color;
+    color: $white-color;
+}
+
+.btn.btn--primary:hover {
+    opacity: 0.9;
+}
+
+/* disabled button */
+.btn--disabled {
+    color: #949494;
+    cursor: default;
+    background-color: #c3c3c3;
+} 
+
+/* Selection */
+
+.select-input {
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.select-input::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    top: 70%;
+}
+
+.select-input:hover .select-input__list {
+    display: block;
+}
+
+.select-input__label {
+    font-size: 1.4rem;
+}
+
+.select-input__icon {
+    font-size: 1.4rem;
+    color: rgb(131, 131, 131);
+}
+
+.select-input__list {
+    --fromY: -10px;
+    --toY: 0;
+    position: absolute;
+    top: calc(100% - 9px);
+    right: 0;
+    left: 0;
+    list-style: none;
+    border-radius: 2px;
+    background-color: #fff;
+    padding: 8px 16px;
+    display: none;
+    animation: fadeInFromTop ease-in-out .2s;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.select-input__item-link {
+    font-size: 1.4rem;
+    color: #000;
+    display: block;
+    padding: 4px 0;
+}
+
+.select-input__item-link:hover {
+    color: var(--primary-color);
+}
+
+/* pagination is here */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-size: 1.7rem;
+}
+
+.pagination-item {
+    margin: 0 12px;
+}
+
+.pagination-item--active .pagination-item__link {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.pagination-item__icon {
+    color: #939393;
+    font-size: 1.9rem;
+    cursor: pointer;
+}
+
+.pagination-item__link{
+    --height: 30px;
+    display: block;
+    text-align: center;
+    line-height: var(--height);
+    text-decoration: none;
+    color: #939393;
+    min-width: 40px;
+    height: var(--height);
+    border-radius: 2px;
+    font-weight: 400;
+}
+
+.product__quantity-input {
+    margin-left: 16px;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 17px;
+}
+
+.minus,
+.plus {
+    font-size: 1rem;
+    color: rgba(0,0,0,.5);
+    border: 1px solid rgba(0,0,0,.09);
+    background-color: transparent;
+    padding: 8px 11.5px;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+.minus {
+    border-radius: 2px 0 0 2px;
+}
+
+.plus {
+    border-radius: 0 2px 2px 0;
+}
+
+.product__quantity-input-desc {
+    display: block;
+    border: 1px solid rgba(0,0,0,.09);
+    border-left: none;
+    border-right: none;
+    width: 50px;
+    outline: none;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #000;
+    font-weight: 500;
+}
+
+.product__quantity-desc {
+    color: #757575;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
+.modal--open {
+    display: flex !important;
+}

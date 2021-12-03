@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FinalShopee:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/FinalShopee_war</output-path>
+    <root id="archive" name="FinalShopee_war.war">
+      <element id="artifact" artifact-name="FinalShopee:war exploded" />
+    </root>
+  </artifact>
+</component>
