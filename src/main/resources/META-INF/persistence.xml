@@ -21,7 +21,7 @@
 <!--            <property name="hibernate.connection.username" value="b744adf1cfea66"/>-->
 <!--            <property name="hibernate.connection.password" value="ecbbce6a"/>-->
 
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/shopee?characterEncoding=utf-8"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/shopee1?characterEncoding=utf-8"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="123456"/>

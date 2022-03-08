@@ -1,9 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
---
--- Host: localhost    Database: shopee
--- ------------------------------------------------------
--- Server version	8.0.24
+-- CREATE DATABASE shopee1 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+use shopee1;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -15,56 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `accounts`
---
-
-DROP TABLE IF EXISTS `accounts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `accounts` (
-  `account_id` int NOT NULL AUTO_INCREMENT,
-  `password` varchar(50) DEFAULT NULL,
-  `username` varchar(50) DEFAULT NULL,
-  `cart_id` int DEFAULT NULL,
-  `user_id` int DEFAULT NULL,
-  PRIMARY KEY (`account_id`),
-  UNIQUE KEY `UK_k8h1bgqoplx0rkngj01pm1rgp` (`username`),
-  KEY `FKsyxxui4rhtth0mqg6apq4cj7w` (`cart_id`),
-  KEY `FKnjuop33mo69pd79ctplkck40n` (`user_id`),
-  CONSTRAINT `FKnjuop33mo69pd79ctplkck40n` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`),
-  CONSTRAINT `FKsyxxui4rhtth0mqg6apq4cj7w` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `accounts`
---
-
-LOCK TABLES `accounts` WRITE;
-/*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` VALUES (8,'123456','kien108',42,4),(9,'123456','kien109',45,5),(10,'123456','kien1',48,6),(11,'123456','kien2',49,7),(12,'123456','kien3',12,8),(13,'1','admin',43,9),(30,'123','admin113',30,26),(31,'123','admin1231231',31,27);
-/*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (4,NULL,NULL,'',NULL),(5,NULL,NULL,'temp',NULL),(6,NULL,NULL,'chua co ten',NULL),(7,NULL,NULL,'chua co ten',NULL),(8,NULL,NULL,'chua co ten',NULL),(9,NULL,NULL,'chua co ten',NULL),(26,NULL,NULL,'chua co ten',NULL),(27,NULL,NULL,'chua co ten',NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `cart`
---
-
-DROP TABLE IF EXISTS `cart`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart` (
-  `cart_id` int NOT NULL AUTO_INCREMENT,
-  `quantity` int DEFAULT NULL,
-  `total_price` double DEFAULT NULL,
-  PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cart`
---
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
@@ -72,138 +24,20 @@ INSERT INTO `cart` VALUES (8,4,19896000),(9,1,24615000),(10,2,19625000),(11,1,19
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `category`
---
 
-DROP TABLE IF EXISTS `category`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
-  `category_id` int NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `accounts` WRITE;
+/*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
+INSERT INTO `accounts` VALUES (8,'123456','kien108',42,4),(9,'123456','kien109',45,5),(10,'123456','kien1',48,6),(11,'123456','kien2',49,7),(12,'123456','kien3',12,8),(13,'1','admin',43,9),(30,'123','admin113',30,26),(31,'123','admin1231231',31,27);
+/*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
+UNLOCK TABLES;
 
---
--- Dumping data for table `category`
---
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Bluetooth'),(2,'Bluetooth 1 bên'),(3,'Chụp tai'),(4,'Có dây'),(5,'Gaming'),(6,'Không dây - True Wireless'),(7,'Thể thao - Neckband'),(8,'Nhét tai - In-ear');
+INSERT INTO `category` VALUES (1,'Bluetooth'),(2,'Bluetooth 1 bÃªn'),(3,'Chá»¥p tai'),(4,'CÃ³ dÃ¢y'),(5,'Gaming'),(6,'KhÃ´ng dÃ¢y - True Wireless'),(7,'Thá»ƒ thao - Neckband'),(8,'NhÃ©t tai - In-ear');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `comments`
---
-
-DROP TABLE IF EXISTS `comments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comments` (
-  `comment_id` int NOT NULL AUTO_INCREMENT,
-  `comment` varchar(200) DEFAULT NULL,
-  `date` datetime(6) DEFAULT NULL,
-  `account_id` int DEFAULT NULL,
-  `product_id` int DEFAULT NULL,
-  PRIMARY KEY (`comment_id`),
-  KEY `FKagkmt4oa6cdwdop1odcp2ala4` (`account_id`),
-  KEY `FK6uv0qku8gsu6x1r2jkrtqwjtn` (`product_id`),
-  CONSTRAINT `FK6uv0qku8gsu6x1r2jkrtqwjtn` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  CONSTRAINT `FKagkmt4oa6cdwdop1odcp2ala4` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `comments`
---
-
-LOCK TABLES `comments` WRITE;
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'9.5 điểm, mua đi các homie','2021-11-08 06:10:20.000000',8,1),(6,'Tai nghe âm cực đầm quẩy vinahouse là số dách','2021-11-08 06:10:20.000000',9,1),(14,'Buồn lắm em ơi','2021-11-08 06:10:20.000000',10,1),(18,'Đánh giá cho có','2021-11-08 21:12:20.461000',10,1),(23,'Buồn lắm em ơi','2021-11-08 22:10:49.221000',8,32),(24,'Mua đê đại hạ giá nè','2021-11-08 22:11:04.661000',8,9),(25,'hú hú hú hú','2021-11-08 22:12:16.539000',8,22),(26,'Ế quá mấy anh ơi mua ủng hộ em','2021-11-08 22:13:07.839000',8,2),(27,'Mua đê mua đê mua về combat căng cực nè','2021-11-08 22:13:45.930000',13,2),(28,'Solo yasuo đê','2021-11-08 22:14:32.027000',11,2),(29,'Mua đi còn chần chờ chi','2021-11-10 16:38:24.773000',13,7),(30,'Tai nghe âm cực đầm quẩy vinahouse là số dách','2021-11-11 16:42:31.261000',10,50);
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `history`
---
-
-DROP TABLE IF EXISTS `history`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `history` (
-  `history_id` int NOT NULL AUTO_INCREMENT,
-  `date` datetime(6) DEFAULT NULL,
-  `acc_id` int DEFAULT NULL,
-  `cart_id` int DEFAULT NULL,
-  PRIMARY KEY (`history_id`),
-  KEY `FKktb70tbl3jrwcro70ty5htjb` (`acc_id`),
-  KEY `FK4xjsb6ie14i5mh56cag55w7au` (`cart_id`),
-  CONSTRAINT `FK4xjsb6ie14i5mh56cag55w7au` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`),
-  CONSTRAINT `FKktb70tbl3jrwcro70ty5htjb` FOREIGN KEY (`acc_id`) REFERENCES `accounts` (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `history`
---
-
-LOCK TABLES `history` WRITE;
-/*!40000 ALTER TABLE `history` DISABLE KEYS */;
-INSERT INTO `history` VALUES (1,'2021-11-07 21:19:05.786000',8,34),(2,'2021-11-07 21:44:02.448000',8,35),(3,'2021-11-07 21:48:15.677000',8,36),(4,'2021-11-07 21:51:44.394000',8,37),(5,'2021-11-07 22:48:17.543000',13,13),(6,'2021-11-07 22:50:35.353000',13,39),(7,'2021-11-07 22:56:24.379000',13,40),(8,'2021-11-08 16:30:13.027000',8,38),(9,'2021-11-08 16:31:32.057000',13,41),(10,'2021-11-08 16:41:36.871000',9,9),(11,'2021-11-08 16:47:27.377000',9,44),(12,'2021-11-08 20:48:40.675000',10,10),(13,'2021-11-08 22:14:11.147000',11,11),(14,'2021-11-11 16:41:53.672000',10,46),(15,'2021-11-11 16:56:38.627000',11,47);
-/*!40000 ALTER TABLE `history` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `lineitem`
---
-
-DROP TABLE IF EXISTS `lineitem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lineitem` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `quantity` int DEFAULT NULL,
-  `cart_id` int DEFAULT NULL,
-  `product_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKlsm40c4io577sw2klwr5v0syf` (`cart_id`),
-  KEY `FK2qcfxxvwmq60ofhj1vq1fgcd3` (`product_id`),
-  CONSTRAINT `FK2qcfxxvwmq60ofhj1vq1fgcd3` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  CONSTRAINT `FKlsm40c4io577sw2klwr5v0syf` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `lineitem`
---
-
-LOCK TABLES `lineitem` WRITE;
-/*!40000 ALTER TABLE `lineitem` DISABLE KEYS */;
-INSERT INTO `lineitem` VALUES (1,1,31,1),(43,1,8,3),(44,2,8,4),(45,1,8,1),(46,3,8,33),(47,1,33,1),(48,1,33,3),(49,1,34,1),(50,1,34,32),(51,10,35,9),(52,1,35,6),(53,1,36,22),(54,1,37,35),(57,3,38,3),(59,1,13,1),(60,1,13,7),(61,1,39,1),(62,1,40,1),(63,10,38,8),(64,1,38,9),(65,1,38,1),(66,1,38,2),(67,1,42,1),(68,1,41,1),(69,1,41,2),(70,1,43,1),(71,1,9,1),(72,1,9,2),(73,1,9,5),(74,1,44,1),(75,1,44,3),(76,1,10,1),(77,1,10,2),(78,1,11,2),(79,1,11,1),(80,9,47,1),(81,5,43,10),(82,1,46,50),(83,1,47,2),(84,1,49,2);
-/*!40000 ALTER TABLE `lineitem` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `manufacturers`
---
-
-DROP TABLE IF EXISTS `manufacturers`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `manufacturers` (
-  `manufacturer_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`manufacturer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `manufacturers`
---
 
 LOCK TABLES `manufacturers` WRITE;
 /*!40000 ALTER TABLE `manufacturers` DISABLE KEYS */;
@@ -211,55 +45,480 @@ INSERT INTO `manufacturers` VALUES (1,'Apple'),(2,'Samsung'),(3,'Sony'),(4,'Beat
 /*!40000 ALTER TABLE `manufacturers` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `product_desc`
---
 
-DROP TABLE IF EXISTS `product_desc`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `product_desc` (
-  `pDesc_id` int NOT NULL AUTO_INCREMENT,
-  `product_id` int DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `detail` varchar(100) DEFAULT NULL,
-  `description` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`pDesc_id`),
-  KEY `FKfajqwi6xbntrqf87smimqjfll` (`product_id`),
-  CONSTRAINT `FKfajqwi6xbntrqf87smimqjfll` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=395 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+/*
+product_id -> price -> discount -> title -> sold -> quantity -> insurance -> color -> c_id -> m_id
+*/
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES 
+(1,'Trắng',0.5,'12 thÃ¡ng',5635000,991, 117,'Tai nghe Bluetooth AirPods Pro Wireless Charge Apple MWP22',8,1),
+(2,'Đen', 0.5,'12 thÃ¡ng',13990000, 1000,108,'Tai nghe chá»¥p tai Bluetooth AirPods Max Apple MGYH3/ MGYJ3/ MGYL3',3,1),
+(3,'Trắng',0.5,'12 thÃ¡ng',711000, 1000,108,'Tai nghe nhÃ©t tai Earpods Apple MNHF2',8,1),
+(4,'Trắng',0.5,'12 thÃ¡ng',4390000,1000,108,'Tai nghe Bluetooth AirPods 2 Apple MV7N2',6,1),
+(5,'Bạc',  0.5,'12 thÃ¡ng',4990000,1000,108,'Tai nghe Bluetooth True Wireless Galaxy Buds Pro',1,2),
+(6,'Xanh',   0.5,'12 thÃ¡ng',224000, 1000,108,'Tai nghe nhÃ©t tai Samsung EG920',8,2),
+(7,'Đen',   0.5,'12 thÃ¡ng',2140000,1000,108,'Tai nghe Bluetooth True Wireless Samsung Galaxy Buds+ R175',6,2),
+(8,'Trắng',0.5,'12 thÃ¡ng',2990000,1000,108,'Tai nghe Bluetooth True Wireless Samsung Galaxy Buds 2 R177N',6,2),
+(9,'Đen',   0.5,'12 thÃ¡ng',2990000,1000,108,'Tai nghe Bluetooth 1 BÃªn Samsung MG900E',2,2),
+(10,'Vàng', 0.5,'12 thÃ¡ng',1450000,1000,108,'Tai nghe Bluetooth Samsung Level U Pro BN920C',1,2),
+(11,'Đen',  0.4,'12 thÃ¡ng',6490000,1000,55, 'Tai nghe Bluetooth True Wireless Sony WF-1000XM4',6,3),
+(12,'Xanh',  0.4,'12 thÃ¡ng',2990000,1000,55, 'Tai nghe Bluetooth Sony Extra Bass True Wireless WF-XB700',6,3),
+(13,'Xanh',  0.4,'12 thÃ¡ng',4790000,1000,55, 'Tai nghe Bluetooth True Wireless Sony WF-SP800N',6,3),
+(14,'Đen',  0.4,'12 thÃ¡ng',8490000,1000,55, 'Tai nghe chá»¥p tai Bluetooth Sony WH-1000XM4',3,3),
+(15,'Đen',  0.4,'12 thÃ¡ng',5790000,1000,55, 'Tai nghe chá»¥p tai Bluetooth Sony WH-XB900N',3,3),
+(16,'Đen',  0.4,'12 thÃ¡ng',1190000,1000,55, 'Tai nghe chá»¥p tai Bluetooth Sony WH-CH510/BC',3,3),
+(17,'Đen',  0.4,'12 thÃ¡ng', 540000, 1000,55, 'Tai nghe chá»¥p tai Sony MDR - ZX110AP',3,3),
+(18,'Đen',  0.4,'12 thÃ¡ng',1890000,1000,55, 'Tai nghe Bluetooth Sony Extra Bass WI-SP510/BZ E',1,3),
+(19,'Đen',  0.4,'12 thÃ¡ng',1690000,1000,55, 'Tai nghe Bluetooth Sony Extra Bass MDR-XB50BS',1,3),
+(20,'Đen',  0.4,'12 thÃ¡ng',3990000,1000,55, 'Tai nghe Bluetooth True Wireless Beats Studio Buds MJ4X3',6,4),
+(21,'Xanh',  0.3,'12 thÃ¡ng',5990000,1000,69, 'Tai nghe Bluetooth True Wireless Beats Powerbeats Pro MV6Y2/ MV702',6,4),
+(22,'Đen', 0.3,'12 thÃ¡ng', 5490000,1000,69, 'Tai nghe chá»¥p tai Beats Solo3 Wireless MX432/ MV8T2/ MX472',3,4),
+(23, 'Đen', 0.3,'12 thÃ¡ng', 7490000,1000,69, 'Tai nghe chá»¥p tai Beats Studio3 Wireless MX422/ MX432',3,4),
+(24,'Vàng', 0.3,'12 thÃ¡ng', 1290000,1000,69, 'Tai nghe Bluetooth Beats Flex MYMC2/ MYMD2',1,4),
+(25, 'Đen',  0.3,'12 thÃ¡ng',2190000,1000,69, 'Tai nghe Bluetooth Beats Powerbeats 3 ML8V2/ MRQ92',1,4),
+(26,'Xanh',  0.3,'12 thÃ¡ng',890000, 1000,69, 'Tai nghe Bluetooth JBL T110BT',1,5),
+(27, 'Bạc', 0.3,'12 thÃ¡ng',2190000,1000,69, 'Tai nghe Bluetooth thá»ƒ thao JBL V110',1,5),
+(28,'Xám',  0.3,'12 thÃ¡ng',2890000,1000,69, 'Tai nghe Bluetooth True Wireless JBL Tune 220',6,5),
+(29,'Đen',  0.3,'12 thÃ¡ng',2872000,1000,69, 'Tai nghe Bluetooth True Wireless JBL REFFLOW',6,5),
+(30,'Đen',  0.3,'12 thÃ¡ng',891000, 1000,69, 'Tai nghe chá»¥p tai Gaming JBL QUANTUM 100',3,5),
+(31,'Xanh',  0.2,'12 thÃ¡ng',1690000,1000,201,'Tai nghe chá»¥p tai Bluetooth JBL T500',3,5),
+(32,'Đen',  0.2,'12 thÃ¡ng',790000, 1000,201,'Tai nghe Bluetooth True Wireless Xiaomi Earbuds Basic 2 BHR4272GL',6,6),
+(33,'Xanh',  0.2,'12 thÃ¡ng',1590000,1000,201,'Tai nghe Bluetooth True Wireless Earphones 2 Basic Xiaomi BHR4089GL',6,6),
+(34,'Xanh',  0.2,'12 thÃ¡ng',2590000,1000,201,'Tai nghe Bluetooth True Wireless Earphones 2 Xiaomi ZBW4493GL',6,6),
+(35,'Đen',  0.2,'12 thÃ¡ng',3490000,100,201,'Tai nghe Bluetooth True Wireless LG Tone Free HBS-FN6',6,7),
+(36,'Đen',  0.2,'12 thÃ¡ng',3490000,1000,201,'Tai nghe Bluetooth Thá»ƒ Thao LG Tone Platinum SE HBS-1120',1,7),
+(37,'Đen',  0.2,'12 thÃ¡ng',899000, 1000,201,'Tai nghe Bluetooth Thá»ƒ Thao LG Tone Triumph HBS-510',1,7),
+(38,'Xanh',  0.2,'12 thÃ¡ng',450000, 1000,201,'Tai nghe Bluetooth Kanen K9',1,8),
+(39,'Xám',  0.2,'12 thÃ¡ng',600000, 1000,201,'Tai nghe Bluetooth Kanen K6',1,8),
+(40,'Đen',  0.2,'12 thÃ¡ng',350000, 1000,201,'Tai nghe chá»¥p tai Kanen IP-892',3,8),
+(41,'Trắng', 0.1,'12 thÃ¡ng',350000, 1000,201,'Tai nghe chá»¥p tai Kanen IP-2090',3,8),
+(42,'Xám',  0.1,'12 thÃ¡ng',150000, 1000,201,'Tai nghe nhÃ©t tai Kanen IP-218',8,8),
+(43,'Xanh',  0.1,'12 thÃ¡ng',200000, 1000,201,'Tai nghe nhÃ©t tai Kanen S40',8,8),
+(44,'Trắng', 0.1,'12 thÃ¡ng',200000, 1000,201,'Tai nghe EP Awei Q60Hi',4,9),
+(45,'Đen',  0.1,'12 thÃ¡ng',150000, 1000,201,'Tai nghe EP Awei Q50Hi',4,9),
+(46,'Đen',  0.1,'12 thÃ¡ng',150000, 1000,201,'Tai nghe CÃ³ DÃ¢y Awei Q29Hi',4,9),
+(47,'Đen',  0.1,'12 thÃ¡ng',150000, 1000,201,'Tai nghe CÃ³ DÃ¢y Awei Q27Hi',4,9),
+(48,'Đen',  0.1,'12 thÃ¡ng',150000, 1000,201,'Tai nghe CÃ³ DÃ¢y Awei Q19Hi',4,9),
+(49,'Đen',  0.1,'12 thÃ¡ng',150000, 1000,201,'Tai nghe CÃ³ DÃ¢y Awei Q7Ni',4,9),
+(50,'Đen',  0.1,'12 thÃ¡ng',200000, 1000,201,'Tai nghe nhÃ©t tai Awei ES500Ni',4,9);
 
---
--- Dumping data for table `product_desc`
---
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+/*
+pDesc_id -> product_id -> name -> detail -> description
+pDesc_id -> desc -> detail -> name -> product_id
+*/
 
 LOCK TABLES `product_desc` WRITE;
 /*!40000 ALTER TABLE `product_desc` DISABLE KEYS */;
-INSERT INTO `product_desc` VALUES (8,1,'Thời gian tai nghe:','Dùng 4.5 giờ - Sạc 2 giờ',''),(9,1,'Thời gian hộp sạc:','Dùng 24 giờ - Sạc 3 giờ',''),(10,1,'Cổng sạc:','Lightning, Sạc không dây',''),(11,1,'Công nghệ âm thanh:','Active Noise Cancellation, Adaptive EQ',''),(12,1,'Tương thích:','Android, iOS (iPhone)',''),(13,1,'Tiện ích:','Chống nước, Chống ồn, Có mic thoại',''),(14,1,'Điều khiển bằng:','Cảm ứng chạm',''),(15,1,'Hãng','Apple',''),(16,1,'','','Thiết kế in-ear hoàn toàn mới và độc đáo.\nTích hợp công nghệ chống ồn chủ động (Active Noise Cancellation).\nChip H1 mạnh mẽ, xử lý âm thanh kỹ thuật số với độ trễ gần như bằng không.\nNghe nhạc đến 4.5 giờ khi bật chống ồn, 5 giờ khi tắt chống ồn.\nSử dụng song song với hộp sạc có thể dùng được đến 24 giờ nghe nhạc.\nHỗ trợ sạc nhanh, cho thời gian sử dụng đến 1 giờ chỉ với 5 phút sạc.\nHộp sạc hỗ trợ sạc không dây chuẩn Qi, tiện lợi khi sạc lại.\nTrang bị chuẩn chống nước IPX4, bảo vệ tai nghe an toàn dưới mưa nhỏ và mồ hôi.'),(17,2,'Thời gian tai nghe:','Dùng 20 giờ - Sạc 3 giờ',''),(18,2,'Cổng sạc:','Lightning',''),(19,2,'Công nghệ âm thanh:','Active Noise Cancellation, Adaptive EQ, Spatial Audio, Transparency Mode',''),(20,2,'Tương thích:','Android, iOS (iPhone)',''),(21,2,'Tiện ích:','Chống ồn',''),(22,2,'Điều khiển bằng:','Phím nhấn',''),(23,2,'Hãng','Apple',''),(24,2,'','','AirPods Max tai nghe chụp tai chống ồn chủ động.\nSử dụng chip H1 Apple cho kết nối nhanh chóng.\nTrang bị Bluetooth 5.0 kết nối mượt mà khoảng cách 10 m.\nTích hợp công nghệ chống ồn ANC, âm thanh xuyên âm (Transperency Mode).\nHỗ trợ Spatial Audio giúp tạo hiệu ứng âm thanh vòm khi xem phim và trải nghiệm nội dung Dolby Atmos được tốt hơn.\nDigital Crown điều chỉnh linh hoạt, nhạy bén.\nTích hợp trợ lý ảo Siri điều khiển thêm tiện lợi.\nNghe nhân cuộc gọi trực tiếp từ tai nghe.\nThời gian sử dụng 20 giờ khi sử dụng chống ồn ANC và Transparency Mode.\nSạc nhanh 5 phút có thể sử dụng được 1.5 giờ.'),(25,3,'Jack cắm:','3.5 mm',''),(26,3,'Tương thích:','Android, iOS (iPhone), Windows',''),(27,3,'Tiện ích:','Có mic thoại',''),(28,3,'Điều khiển bằng:','Phím nhấn',''),(29,3,'Hãng','Apple',''),(30,3,'','','Thiết kế hiện đại, sang trọng và thoải mái.\nCó phím điều chỉnh âm lượng, nghe/nhận cuộc gọi.\nCổng 3.5mm phù hợp nhiều loại điện thoại, máy tính bảng, laptop.'),(31,4,'Pin:','Dùng 5 giờ - Sạc 2 giờ',''),(32,4,'Cổng sạc:','Lightning',''),(33,4,'Tương thích:','Android, iOS (iPhone)',''),(34,4,'Ứng dụng kết nối:','Siri',''),(35,4,'Tiện ích:','Có mic thoại',''),(36,4,'Điều khiển bằng:','Cảm ứng chạm',''),(37,4,'Hãng','Apple',''),(38,4,'','','Thiết kế đơn giản, thời trang và nhỏ gọn.\nTrang bị chip H1 hoàn toàn mới, cho tốc độ kết nối, chuyển đổi giữa các thiết bị nhanh chóng.\nKích hoạt nhanh trợ lý ảo Siri bằng cách nói \"Hey, Siri\".\nCó thể sử dụng nghe nhạc lên đến 5 giờ (âm lượng 50%) cho mỗi một lần sạc đầy.\nTích hợp công nghệ sạc nhanh hiện đại. Sạc nhanh 15 phút có thể nghe nhạc 3 giờ (âm lượng 50%).\nSử dụng song song với hộp sạc có thể dùng được lên đến 24 giờ.\nTính năng nhận cuộc gọi, kích hoạt Siri, nghe hoặc tạm dừng đoạn nhạc đang phát.'),(39,5,'Thời gian nghe:','Dùng 8 giờ - Sạc 3 giờ',''),(40,5,'Thời gian hộp sạc:','Dùng 20 giờ - Sạc 3 giờ',''),(41,5,'Cổng sạc:','Type-C',''),(42,5,'Tương thích:','Android, iOS (iPhone), Windows',''),(43,5,'Tiện ích:','Chống nước, Chống ồn',''),(44,5,'Điều khiển bằng:','Cảm ứng chạm',''),(45,5,'Hãng','Samsung',''),(46,5,'','','Nâng tầm trải nghiệm âm và chất lượng cuộc gọi với chống ồn chủ động (ANC).\nKết nối không dây Bluetooth 5.0 dễ dàng với các thiết bị ngoài, đường truyền ổn định.\nChuẩn âm thanh studio với loa 2 chiều AKG mạnh mẽ.\nTận hưởng âm thanh vòm lôi cuốn, chuẩn điện ảnh từ 360 Audio.\nĐàm thoại rõ ràng với hệ thống 3 mic và bộ phận thu nhận giọng nói (Voice Pickup Unit).\nLoa 2 chiều (loa trầm 11mm, loa bổng 6.5mm).\nKhả năng kháng nước hiệu quả cùng xếp hạng kháng nước IPX7.\nThời gian sử dụng 5 giờ và 13 giờ cùng hộp sạc (bật chống ồn), sử dụng 8 giờ và 20 giờ cùng hộp sạc (tắt chống ồn).'),(47,6,'Jack cắm:','3.5 mm',''),(48,6,'Tương thích:','Android, iOS (iPhone), Windows',''),(49,6,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(50,6,'Điều khiển bằng:','Mic thoại, Nghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(51,6,'Hãng','Samsung',''),(52,6,'','','Thiết kế gọn đẹp, có 2 màu đen và đỏ.\nDây dài 1.2 m, đệm tai có móc giúp đeo chắc chắn.\nÂm thanh trong trẻo, trung thực.\nCó mic thoại, nút chỉnh nhận cuộc gọi, chuyển bài hát, dừng/chơi nhạc, tăng/giảm âm lượng.'),(53,7,'Thời gian nghe:','Dùng 11 giờ - Sạc 2 giờ',''),(54,7,'Thời gian hộp sạc:','Dùng 22 giờ - Sạc 3 giờ',''),(55,7,'Cổng sạc:','Type-C',''),(56,7,'Công nghệ âm thanh:','Ambient Sound',''),(57,7,'Tương thích:','Android, iOS (iPhone), Windows',''),(58,7,'Điều khiển bằng:','Cảm ứng chạm',''),(59,7,'Hãng','Samsung',''),(60,7,'','','Thiết kế thời thượng, đeo vừa vặn, phù hợp cho mọi đối tượng sử dụng. \nChuẩn âm thanh studio với loa 2 chiều AKG mạnh mẽ.\nKết nối không dây Bluetooth 5.0 dễ dàng với các thiết bị.\nThời gian sử dụng 11 giờ và 22 giờ cùng hộp sạc.\nSạc nhanh 3 phút cung cấp đến 1 giờ sử dụng.\nCó thể sạc ngay với thiết bị sạc không dây chuẩn Qi bất kì.'),(61,8,'Thời gian nghe:','Dùng 7.5 giờ - Sạc 1.5 giờ',''),(62,8,'Thời gian hộp sạc:','Dùng 29 giờ - Sạc 1.5 giờ',''),(63,8,'Cổng sạc:','Type-C',''),(64,8,'Công nghệ âm thanh:','Active Noise Cancellation, Ambient Sound',''),(65,8,'Tương thích:','Android',''),(66,8,'Tiện tích:','Chống nước IPX2, Có mic thoại',''),(67,8,'Hỗ trợ kết nối:','Bluetooth 5.2',''),(68,8,'Điều khiển bằng:','Cảm ứng chạm',''),(69,8,'Hãng','Samsung',''),(70,8,'','','Thiết kế thời thượng, cá tính.\nChất âm chuẩn studio với loa 2 chiều.\nHiệu quả chống ồn lên đến 98%.\nĐàm thoại dễ dàng với 3 micro và bộ cảm biến nhận diện giọng nói.\nĐồng bộ với các thiết bị Samsung Galaxy.\nThời gian nghe nhạc: Khoảng 5 giờ (bật chống ồn), khoảng 7.5 giờ (tắt chống ồn).\nThời gian đàm thoại: Khoảng 3.5 giờ (bật chống ồn), khoảng 3.5 giờ (tắt chống ồn).\n 5 phút sạc cho 1 giờ chơi nhạc.\nĐạt tiêu chuẩn chống nước IPX2.\nĐiều khiển cảm ứng dừng/phát, trả lời cuộc gọi, chuyển bài.'),(71,9,'Pin:','Dùng 9 giờ - Sạc 2 giờ',''),(72,9,'Cổng sạc:','Micro USB',''),(73,9,'Tương thích:','Android, iOS (iPhone)',''),(74,9,'Tiện ích:','Có mic thoại, Tai nghe nhét tai',''),(75,9,'Điều khiển bằng:','Phím nhấn',''),(76,9,'Hãng','Samsung',''),(77,9,'','','Kiểu dáng nhỏ gọn, vỏ nhựa giả da sang trọng.\nChuẩn Bluetooth V3.0 kết nối mượt mà tối đa đến 10 m.\nPhối ghép với 2 thiết bị cùng lúc.\nÂm thanh rõ ràng với công nghệ giảm tạp âm.\nSử dụng kéo dài đến 9 tiếng, sạc trong 2 tiếng.'),(78,10,'Pin:','Dùng 9 giờ - Sạc 3 giờ',''),(79,10,'Cổng sạc:','Micro USB',''),(80,10,'Tương thích:','Android, iOS (iPhone)',''),(81,10,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(82,10,'Điều khiển bằng:','Phím nhấn',''),(83,10,'Hãng','Samsung',''),(84,10,'','',' Đệm tai được thiết kế mềm mại, linh hoạt.\nCung cấp hơn 9 giờ nghe nhạc, 9 giờ đàm thoại và 300 giờ cho thời gian chờ.\nChất lượng âm thanh tuyệt hảo nhờ công nghệ giảm tiếng ồn NR và EC.\nKết nối nam châm giữa hai đầu tai nghe của Level U sẽ giữ tai nghe khi không sử dụng.\nDung lượng pin 200 mAh (lõi pin Li-Ion). Thời gian sạc trung bình khoảng 3 giờ.'),(85,11,'Thời gian nghe:','Dùng 8 giờ - Sạc 1.5 giờ',''),(86,11,'Thời gian hộp sạc:','Dùng 16 giờ - Sạc 2.5 giờ',''),(87,11,'Cổng sạc:','Type-C',''),(88,11,'Công nghệ âm thanh:','Chống ồn HD QN1',''),(89,11,'Tương thích:','Android, iOS (iPhone, iPad), Windows',''),(90,11,'Tiện tích:','Chống nước, Chống ồn',''),(91,11,'Điều khiển bằng:','Cảm ứng chạm',''),(92,11,'Hãng','Sony',''),(93,11,'','','Kiểu dáng nhỏ gọn thiết kế sang trọng.\nThưởng thức âm thanh Hi-Res có chất lượng vượt trội nhờ công nghệ LDAC.\nKhả năng chống ồn tuyệt vời nhờ con chip V1 thế hệ mới.\nDung lượng pin lớn, hỗ trợ sạc nhanh 5 phút dùng 60 phút.\nThưởng thức trọn vẹn bài hát nhờ loại bỏ tiếng ồn của gió.\nTắt nhạc khi bạn trò chuyện với người xung quanh.\nChuẩn chống nước IPX4 bảo vệ tai nghe an toàn trước nước mưa và mồ hôi.\nDễ dàng tiếp nhận thông tin hơn với trợ lý ảo.'),(94,12,'Thời gian nghe:','Dùng 9 giờ - Sạc 2.5 giờ',''),(95,12,'Thời gian hộp sạc:','Dùng 18 giờ - Sạc 3 giờ',''),(96,12,'Cổng sạc:','Type-C',''),(97,12,'Công nghệ âm thanh:','Extra Bass',''),(98,12,'Tương thích:','Android, iOS (iPhone, iPad), Windows',''),(99,12,'Tiện tích:','Có mic thoại, Đệm tai đi kèm, Chống nước & bụi IP54',''),(100,12,'Điều khiển bằng:','Phím nhấn',''),(101,12,'Hãng','Sony',''),(102,12,'','','Thiết kế không dây thời thượng, có nút đệm êm tai.\nTái hiện chi tiết từng dải âm với công nghệ Extra Bass.\nTrang bị chuẩn kháng nước IPX4 chống thấm nước cho tai nghe hiệu quả.\nTùy chỉnh nghe nhạc, gọi rảnh tay tương tác với Google Assistant, Siri tiện lợi.\nThời gian sử dụng tối đa lên tới 18 tiếng.\nKết nối Bluetooth 5.0 ổn định với khoảng cách xa đến 10 m.'),(103,13,'Thời gian nghe:','Dùng 9 giờ - Sạc 2.5 giờ',''),(104,13,'Thời gian hộp sạc:','Dùng 26 giờ - Sạc 3 giờ',''),(105,13,'Cổng sạc:','Type-C',''),(106,13,'Công nghệ âm thanh:','Extra Bass',''),(107,13,'Tương thích:','Android, iOS (iPhone, iPad), Windows',''),(108,13,'Ứng dụng kết nối:','Sony Headphones Connect',''),(109,13,'Tiện tích:','Có mic thoại, Đệm tai đi kèm, Chống nước & bụi IP54',''),(110,13,'Điều khiển bằng:','Phím nhấn',''),(111,13,'Hãng','Sony',''),(112,13,'','','Thiết kế sang trọng, êm ái và chắc chắn khi sử dụng, nhiều cỡ đệm tai thay đổi theo người dùng.\nChuẩn âm thanh Extra Bass độc quyền của Sony cho âm bass trầm sâu lắng và mạnh mẽ.\nKết nối không dây Bluetooth 5.0 ổn định với phạm vi xa đến 10 m.\nĐiều khiển cảm ứng touch control, ứng dụng điều khiển Sony Connect Headphone (iOS/Android) tùy chỉnh tính năng theo sở thích.\nKháng nước và bụi chuẩn IP55 thoải mái sử dụng ngoài trời, khi luyện tập.\nChống ồn chủ động (ANC) cho trải nghiệm âm nhạc hoàn hảo nhất.\nThời gian sử dụng 9 giờ (13 giờ khi tắt chống ồn), thêm 9 giờ cùng hộp sạc (13 giờ khi tắt chống ồn).\nThời gian sạc 2.5 giờ, sạc nhanh 10 phút cho sử dụng thêm đến 60 phút.'),(113,14,'Pin:','Dùng 30 giờ - Sạc 3 giờ',''),(114,14,'Cổng sạc:','Type-C',''),(115,14,'Công nghệ âm thanh:','Chống ồn HD QN1',''),(116,14,'Tương thích:','Android, iOS (iPhone)',''),(117,14,'Tiện ích:','Chống ồn',''),(118,14,'Điều khiển bằng:','Cảm ứng chạm',''),(119,14,'Hãng','Sony',''),(120,14,'','','Thiết kế trẻ trung, gọn nhẹ đẽ dàng mang theo bên mình.\nChất âm chân thực, sâu lắng với màng loa 40 mm, màng chắn Polymer tinh thể lỏng (LCD) và công nghệ Hi-Res Audio.\nTự động ngừng phát nhạc khi bạn trò chuyện và phát nhạc lại khi bạn ngừng nói chuyện.\nTự động điều chỉnh âm thanh cho phù hợp với hành động của bạn, đem đến trải nghiệm tuyệt vời.\nTự động ngừng phát nhạc khi bạn tháo tai nghe ra.\nHạ thấp âm lượng chỉ với một cái chạm vào tai nghe.\nThỏa sức nghe nhạc cả ngày dài với thời lượng pin khủng đến 30 giờ, và sạc lại trong 3 giờ.\nCông nghệ chống ồn HD QN1 cho chất lượng âm hoàn hảo khi thưởng thức.\nKiểm soát việc vận hành của tai nghe một cách nhanh chóng và đơn giản.'),(121,15,'Pin:','Dùng 30 giờ - Sạc 7 giờ',''),(122,15,'Cổng sạc:','Type-C',''),(123,15,'Công nghệ âm thanh:','Extra Bass',''),(124,15,'Tương thích:','Android, iOS (iPhone)',''),(125,15,'Ứng dụng kết nối:','Sony Headphones Connect',''),(126,15,'Tiện ích:','Chống ồn',''),(127,15,'Điều khiển bằng:','Cảm ứng chạm, Phím nhấn',''),(128,15,'Hãng','Sony',''),(129,15,'','','Đệm tai dày, êm ái, mang lại cảm giác thoải mái khi đeo.\nÂm thanh bùng nổ với EXTRA BASS và công nghệ chống ồn kỹ thuật số.\nKết nối không dây với công nghệ kết nối 1 chạm NFC và Bluetooth 4.2.\nTích hợp trợ lý giọng nói Google Assistant tiện lợi, Amazon Alexa và Siri.\nĐiều chỉnh âm thanh ứng dụng Sony | Headphones Connect. \nThời gian sử dụng khoảng 30 giờ, sạc đầy 7 giờ.\nSạc nhanh trong 10 phút để có thể nghe nhạc thêm 60 phút.\nTrang bị micro hỗ trợ đàm thoại và nhiều nút tính năng tiện lợi.'),(130,16,'Pin:','Dùng 35 giờ - Sạc 4.5 giờ',''),(131,16,'Cổng sạc:','Type-C',''),(132,16,'Tương thích:','Android, iOS (iPhone), MacOS (Macbook, iMac), Windows',''),(133,16,'Tiện ích:','Có mic thoại',''),(134,16,'Điều khiển bằng:','Phím nhấn',''),(135,16,'Hãng','Sony',''),(136,16,'','','Thiết kế đẹp mắt, có thể gập phần đệm tai, gọn gàng dễ mang theo.\nKết nối Bluetooth 5.0 ổn định, tiện lợi, khoảng cách kết nối tối đa là 10 m.\nĐệm tai nghe dày dặn, êm ái khi đeo trong thời gian dài.\nSạc lại trong 4.5 giờ, thời lượng sử dụng pin cực khủng lên đến 35 giờ (sạc 10 phút có thể nghe thêm đến 90 phút).\nTích hợp micro đàm thoại tiện lợi, có thể nhận cuộc gọi dễ dàng mà không cần thao tác trên điện thoại.\nTrang bị các nút nhấn như: Nhận cuộc gọi, phát/dừng chơi nhạc, chuyển bài hát, tăng/giảm âm lượng.'),(137,17,'Jack cắm:','3.5 mm',''),(138,17,'Tương thích:','Android, Windows',''),(139,17,'Tiện ích:','Có mic thoại',''),(140,17,'Điều khiển bằng:','Phím nhấn, Chuyển bài hát, Mic thoạiNghe/nhận cuộc gọi, Phát/dừng chơi nhạc',''),(141,17,'Hãng','Sony',''),(142,17,'','','Thiết kế hiện đại, đệm tai lớn, mềm, thoải mái khi đeo.\nQuai đeo tai nghe có thể kéo dãn 4.5 cm.\nTái tạo âm thanh trong trẻo, rõ nét.\nDây dài 1.2 m, jack cắm 3.5 mm thông dụng.'),(143,18,'Pin:','Dùng 15 giờ - Sạc 3 giờ',''),(144,18,'Cổng sạc:','Type-C',''),(145,18,'Công nghệ âm thanh:','Extra Bass',''),(146,18,'Tương thích:','Android, iOS (iPhone), MacOS (Macbook, iMac), Windows',''),(147,18,'Tiện ích:','Chống nước, Có mic thoại',''),(148,18,'Điều khiển bằng:','Phím nhấn',''),(149,18,'Hãng','Sony',''),(150,18,'','','Thiết kế gọn đẹp, kiểu vòng cổ thoải mái, có móc cố định kèm đệm êm dễ dùng.\nChống thấm nước chuẩn IPX5 bảo vệ tai nghe khi tập luyện, tiếp xúc với nước.\nÂm thanh sâu lắng với công nghệ Extra Bass hiện đại.\nDễ dàng tùy chỉnh tác vụ nghe nhạc, gọi rảnh tay, tương tác với Google Assistant, Siri.\nDùng mọi lúc mọi nơi với thời gian tối đa 15 tiếng.\nKết nối Bluetooth 5.0 với khoảng cách 10 m, đường truyền ổn định.'),(151,19,'Pin:','Dùng 8.5 giờ - Sạc 2.5 giờ',''),(152,19,'Cổng sạc:','Micro USB',''),(153,19,'Công nghệ âm thanh:','Extra Bass',''),(154,19,'Tương thích:','Android, iOS (iPhone), MacOS (Macbook, iMac), Windows',''),(155,19,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(156,19,'Hỗ trợ kết nối:','NFC, Bluetooth 4.1',''),(157,19,'Điều khiển bằng:','Phím nhấn',''),(158,19,'Hãng','Sony',''),(159,19,'','','Được thiết kế bền và cứng cáp phù hợp trong hoạt động thể thao.\nSử dụng công nghệ EXTRA BASS giúp tăng cường âm trầm, phù hợp cho các dòng nhạc điện tử.\nThiết kế IPX4 chống tia nước bắn phù hợp để sử dụng cho mọi thời tiết.\nKết nối không dây với Bluetooth 4.1, khoảng cách kết nối đến 10 m.\nMóc cố định giúp giữ tai nghe nằm ở đúng vị trí.\nMột micro tích hợp để thực hiện cuộc gọi rảnh tay.\nThời gian đàm thoại/nghe nhạc có thể lên đến 8.5 giờ, thời gian sạc khoảng 2.5 giờ.\nThời gian chờ có thể lên đến 200 giờ.'),(160,20,'Thời gian nghe:','Dùng 8 giờ - Sạc 3 giờ',''),(161,20,'Thời gian hộp sạc:','Dùng 16 giờ - Sạc 3 giờ',''),(162,20,'Cổng sạc:','Type-C',''),(163,20,'Công nghệ âm thanh:','Active Noise Cancelling, Transparency Mode',''),(164,20,'Tương thích:','Android, iOS (iPhone, iPad)',''),(165,20,'Ứng dụng kết nối:','Bluetooth TWS',''),(166,20,'Tiện tích:','Chống ồn, Đệm tai đi kèm',''),(167,20,'Điều khiển bằng:','Phím nhấn',''),(168,20,'Hãng','Beats',''),(169,20,'','','Thiết kế hình bầu dục lạ mắt, 2 màu đen - trắng thời trang, đeo vừa vặn.\nChất âm mạnh mẽ, cân bằng. \nHỗ trợ Bluetooth 5.0 Class-1 cho kết nối nhanh chóng.\nSử dụng phù hợp hoàn cảnh với công nghệ Chống ồn chủ động ANC và Transparency mode (Xuyên âm).\nTai nghe dùng được 8 tiếng, hộp sạc 16 tiếng, sạc nhanh Fast Fuel 5 phút cho 1 tiếng sử dụng.\nYên tâm luyện tập với tiêu chuẩn chống nước IPX4.\nPhím nhấn dễ chỉnh phát/dừng nhạc, bật trợ lý ảo, nhận cuộc gọi,...'),(170,21,'Thời gian nghe:','Dùng 9 giờ - Sạc 3 giờ',''),(171,21,'Thời gian hộp sạc:','Dùng 24 giờ - Sạc 3 giờ',''),(172,21,'Cổng sạc:','Lightning',''),(173,21,'Tương thích:','Android, iOS (iPhone)',''),(174,21,'Ứng dụng kết nối:','Siri',''),(175,21,'Tiện tích:','Chống nước, Có mic thoại',''),(176,21,'Điều khiển bằng:','Phím nhấn',''),(177,21,'Hãng','Beats',''),(178,21,'','','Tích hợp chip H1 cho tốc độ kết nối, chuyển đổi, dùng ổn định.\nTrang bị cảm biến Auto Play khi bỏ tai, nhạc sẽ tạm dừng phát ngay.\nCổng sạc Lighting chuẩn hãng, gọi trợ lý ảo Siri thông qua khẩu lệch \"Hey Siri\" quen thuộc.\nChuẩn chống nước, mồ hôi IP57 yên tâm khi chơi thể thao cường độ cao.\nThời gian nghe nhạc và đàm thoại lên tới 9 giờ và kết hợp hộp sạc là 24 giờ.\nCó tính năng Fast Fuel phát nhạc 1.5 giờ sau khi sạc 5 phút và 4.5 giờ phát nhạc khi sạc sau 15 phút.'),(179,22,'Thời gian tai nghe:','Dùng 40 giờ - Sạc 3 giờ',''),(180,22,'Cổng sạc:','Micro USB',''),(181,22,'Tương thích:','Android, iOS (iPhone), Windows',''),(182,22,'Ứng dụng kết nối:','Siri',''),(183,22,'Điều khiển bằng:','Phím nhấn',''),(184,22,'Hãng','Beats',''),(185,22,'','','Thiết kế gọn nhẹ, sang trọng, đệm tai mềm thoải mai khi đeo.\nKết nối không dây Bluetooth 4.0 mượt mà xa đến 10 m. \nSử dụng chip Apple W1 tạo âm thanh mạnh mẽ, chất lượng cao.\nThời gian sử dụng 40 giờ liên tục sau 1 lần sạc.\nTính năng Fast Fuel sạc nhanh 5 phút sử dụng được 3 giờ.'),(186,23,'Thời gian tai nghe:','Dùng 22 giờ - Sạc 3 giờ',''),(187,23,'Cổng sạc:','Micro USB',''),(188,23,'Công nghệ âm thanh:','Active Noise Cancelling',''),(189,23,'Tương thích:','Android, iOS (iPhone), Windows',''),(190,23,'Tiện ích:','Chống ồn',''),(191,23,'Điều khiển bằng:','Phím nhấn',''),(192,23,'Hãng','Beats',''),(193,23,'','','Thiết kế gọn nhẹ, tinh tế, đệm tai mềm thoải mái khi đeo.\nKết nối không dây với Bluetooth 4.0, khoảng cách kết nối đến 10 m.\nSử dụng chip Apple W1 mới kết nối nhanh và ổn định, âm thanh mạnh mẽ.\nTrang bị công nghệ chống ồn chủ động (Pure Active Noise Cancelling).\nThời gian sử dụng 22 giờ (bật chống ồn), 40 giờ (tắt chống ồn).\nTính năng Fast Fuel sạc nhanh 10 phút sử dụng được 3 giờ.'),(194,24,'Pin:','Dùng 12 giờ - Sạc 2 giờ',''),(195,24,'Công nghệ âm thanh:','Audio Sharing',''),(196,24,'Tương thích:','Android, iOS (iPhone), Windows',''),(197,24,'Tiện ích:','Đệm tai đi kèm',''),(198,24,'Điều khiển bằng:','Phím nhấn',''),(199,24,'Hãng','Beats',''),(200,24,'','','Thiết kế gọn nhẹ, phù hợp với các hoạt động thể thao.\nTích hợp chip Apple W1 cho âm thanh mạnh mẽ, chất lượng cao.\nThời gian sử dụng 12 giờ liên tục sau 1 lần sạc.\nTính năng Fast Fuel sạc nhanh 10 phút sử dụng được 1.5 giờ.'),(201,25,'Pin:','Dùng 12 giờ - Sạc 2 giờ',''),(202,25,'Cổng sạc:','Micro USB',''),(203,25,'Tương thích:','Android, iOS (iPhone), Windows',''),(204,25,'Tiện ích:','Chống nước',''),(205,25,'Điều khiển bằng:','Phím nhấn',''),(206,25,'Hãng','Beats',''),(207,25,'','','Thiết kế năng động, 2 phiên bản màu đen - đen đỏ lựa chọn tùy thích.  \nCải thiện chất lượng âm thanh tối ưu với chip Apple W1. \nThời gian sử dụng liên tục đến 12 giờ sau 1 lần sạc.\nTính năng Fast Fuel sạc nhanh 5 phút sử dụng được trong 1 giờ.\nDual-Driver mang đến hiệu suất âm thanh cao.\nChuẩn IPX4 chống mồ hôi và tia nước bắn.'),(208,26,'Pin:','Dùng 6 giờ - Sạc 2 giờ',''),(209,26,'Cổng sạc:','Micro USB',''),(210,26,'Tương thích:','Android, iOS (iPhone), Windows',''),(211,26,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(212,26,'Điều khiển bằng:','Phím nhấn',''),(213,26,'Hãng','JBL',''),(214,26,'','','Tai nghe với thiết kế dạng in-ear với kiểu dáng trẻ trung, năng động, trọng lượng chỉ 16.5g.\nKích thước màng loa 9mm mang đến âm thanh mạnh mẽ và cân bằng.\nĐệm tai nghe mềm mại tạo cảm giác thoải mái khi đeo.\nKết nối không dây với Bluetooth 4.0 nhanh, ổn định.\nTương thích với nhiều dòng điện thoại, máy tính bảng.\nThời gian sử dụng 6 giờ, thời gian sạc 2 giờ.'),(215,27,'Pin:','Dùng 8 giờ - Sạc 2 giờ',''),(216,27,'Cổng sạc:','Micro USB',''),(217,27,'Tương thích:','Android, iOS (iPhone), Windows',''),(218,27,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(219,27,'Hãng','JBL',''),(220,27,'','','Tai nghe thể thao thiết kế gọn nhẹ với kiểu dáng trẻ trung, năng động.\nThời gian sử dụng 8 giờ đồng hồ, thời gian sạc 2 giờ.\nCông nghệ Bluetooth 4.2 cho kết nối tới 10 m mượt mà, ổn định.\nHỗ trợ bằng giọng nói Google Assistant chỉ với 1 nút bấm.\nTích hợp Microphone với công nghệ khử tiếng vang cho âm thanh cuộc gọi trong trẻo, rõ ràng.\nCung cấp các nút tai nghe với các kích cỡ khác nhau phù hợp với người dùng.'),(221,28,'Thời gian nghe:','Dùng 3 giờ - Sạc 2 giờ',''),(222,28,'Thời gian hộp sạc:','Dùng 16 giờ - Sạc 2 giờ',''),(223,28,'Cổng sạc:','Micro USB',''),(224,28,'Công nghệ âm thanh:','JBL Pure Bass',''),(225,28,'Tương thích:','Android, iOS (iPhone), Windows',''),(226,28,'Tiện tích:','Có mic thoại',''),(227,28,'Điều khiển bằng:','Phím nhấn',''),(228,28,'Hãng','JBL',''),(229,28,'','','Thiết kế earbuds sành điệu, trẻ trung và bắt mắt.\nTrang bị Bluetooth 5.0 cho kết nối nhanh và ổn định.\nChất lượng âm thanh vượt trội với driver 12.5 mm và công nghệ JBL Pure Bass Sound.\nThời gian sử dụng 3 giờ, hộp sạc cung cấp thêm 16 giờ cho tai nghe.'),(230,29,'Thời gian nghe:','Dùng 10 giờ - Sạc 2 giờ',''),(231,29,'Thời gian hộp sạc:','Dùng 20 giờ - Sạc 2 giờ',''),(232,29,'Cổng sạc:','Micro USB',''),(233,29,'Công nghệ âm thanh:','Ambient Aware, JBL Signature Sound, TalkThru',''),(234,29,'Tương thích:','Android, iOS (iPhone), Windows',''),(235,29,'Tiện tích:','Chống nước, Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(236,29,'Điều khiển bằng:','Phím nhấn',''),(237,29,'Hãng','JBL',''),(238,29,'','','Thiết kế nhỏ gọn, hiện đại và cá tính.\nCông nghệ bluetooth 5.0 cho kết nối nhanh và ổn định.\nCông nghệ âm thanh JBL Signature Sound.\nTrang bị các công nghệ TalkThru và Ambient Aware.\nCó khả năng chống nước đạt chuẩn IPX7.\nThời gian sử dụng 10 giờ, thêm 20 giờ cùng hộp sạc.\nThời gian sạc 2 giờ, sạc nhanh 10 phút sử dụng đến 60 phút.'),(239,30,'Jack cắm:','3.5 mm',''),(240,30,'Công nghệ âm thanh:','Ambient Aware, JBL Signature Sound, TalkThru',''),(241,30,'Tương thích:','MacOS (Macbook, iMac), Windows',''),(242,30,'Điều khiển bằng:','Phím nhấn',''),(243,30,'Hãng','JBL',''),(244,30,'','','Tai nghe chụp tai thời thượng, đệm xốp siêu nhẹ, phù hợp tín đồ chơi game.\nTái tạo âm thanh chân thật, sắc nét nhờ màng loa 40 mm, công nghệ JBL QuantumSOUND Signature.\nCó microphone cho đàm thoại to, rõ, kêu gọi đồng đội dễ dàng hơn. \nSử dụng jack kết nối 3.5 mm kết nối đa thiết bị. \nTích hợp nút cơ bật/tắt, tăng giảm âm lượng linh hoạt. '),(245,31,'Pin:','Dùng 16 giờ - Sạc 2 giờ',''),(246,31,'Cổng sạc:','Micro USB',''),(247,31,'Tương thích:','Android,iOS (iPhone)',''),(248,31,'Tiện ích:','Có mic thoại',''),(249,31,'Điều khiển bằng:','Phím nhấn',''),(250,31,'Hãng','JBL',''),(251,31,'','','Thiết kế thể thao sành điệu, có thể gấp gọn.\nCó thể kéo dãn phần chụp tai phù hợp nhiều người dùng khác nhau.\nCông nghệ Bluetooth 4.1, kết nối trong khoảng cách đến 10 m.\nBật trợ lý ảo nhanh chóng ra lệnh ngay trên tai nghe.\nPin 16 giờ, hoạt động cả ngày dài.\nTrang bị các nút nhấn điều khiển như: Phát/dừng chơi nhạc, nhận cuộc gọi, tăng, giảm âm lượng.'),(252,32,'Thời gian nghe:','Dùng 4 giờ - Sạc 1.5 giờ',''),(253,32,'Thời gian hộp sạc:','Dùng 12 giờ - Sạc 2 giờ',''),(254,32,'Cổng sạc:','Micro USB',''),(255,32,'Công nghệ âm thanh:','Lọc âm, khử ồn DSP',''),(256,32,'Tương thích:','Android, iOS (iPhone), Windows',''),(257,32,'Tiện tích:','Chống nước',''),(258,32,'Điều khiển bằng:','Phím nhấn',''),(259,32,'Hãng','Xiaomi',''),(260,32,'','','Thiết kế nhỏ gọn, phù hợp với nhiều kích cỡ tai.\nMàng loa có kích thước 7.2 mm cho âm bass các thêm dày và sâu.\nBắt trọn âm thanh với công nghệ khử tiếng ồn DSP.\nYên tâm sử dụng với khả năng chống nước IPX4.\nNghe nhạc thả ga, sạc đầy pin nhanh chóng.\nKết nối không dây nhanh chóng, tương thích với nhiều thiết bị nhờ công nghệ Bluetooth 5.0.\nTự động kết nối, điều khiển tai nghe tiện lợi.'),(261,33,'Thời gian nghe:','Dùng 5 giờ - Sạc 1.5 giờ',''),(262,33,'Thời gian hộp sạc:','Dùng 20 giờ - Sạc 1.5 giờ',''),(263,33,'Cổng sạc:','Type-C',''),(264,33,'Công nghệ âm thanh:','codecAAC',''),(265,33,'Tương thích:','Android, iOS (iPhone), Windows',''),(266,33,'Tiện tích:','Chống nước',''),(267,33,'Điều khiển bằng:','Cảm ứng chạm',''),(268,33,'Hãng','Xiaomi',''),(269,33,'','','Thiết kế nhỏ gọn, tiện lợi mang theo.\nChuẩn Bluetooth 5.0 kết nối mượt mà đến 10m.\nKhả năng chống nước chuẩn IPX5.\nĐiều khiển bằng cảm ứng trên tai nghe.\nTrang bị công nghệ khử tiếng ồn môi trường.\nÂm thanh tuyệt vời với codec AAC và màng loa 14,2 mm.\nThời gian sử dụng 5 giờ, kèm hộp sạc 20 giờ và sạc 1.5 giờ.'),(270,34,'Thời gian nghe:','Dùng 4 giờ - Sạc 1 giờ',''),(271,34,'Thời gian hộp sạc:','Dùng 18 giờ - Sạc 1.5 giờ',''),(272,34,'Cổng sạc:','Type-C',''),(273,34,'Tương thích:','Android, iOS (iPhone), Windows',''),(274,34,'Tiện tích:','Chống nước',''),(275,34,'Điều khiển bằng:','Cảm ứng chạm',''),(276,34,'Hãng','Xiaomi',''),(277,34,'','','Kiểu dáng nhỏ gọn cùng thiết kế hiện đại, trẻ trung.\nKết nối nhanh chóng và ổn định trong phạm vi 10 m nhờ Bluetooth 5.0.\nDễ dàng điều khiển chỉ bằng cảm ứng thao tác chạm.\nTrò chuyện điện thoại thoải mái và rõ ràng hơn nhờ công nghệ khử tiếng ồn.\nBảo vệ tai nghe khỏi tác hại của nước với chuẩn chống nước IPX5.\nChất âm sống động, tận hưởng trọn vẹn các giai điệu.\nThời gian sử dụng 4 giờ, kèm hộp sạc 18 giờ và sạc 1 giờ.'),(278,35,'Thời gian nghe:','Dùng 6 giờ - Sạc 1 giờ',''),(279,35,'Thời gian hộp sạc:','Dùng 12 giờ - Sạc 1.5 giờ',''),(280,35,'Cổng sạc:','Type-C',''),(281,35,'Công nghệ âm thanh:','Headphone Spatial Processing, Meridian, Truyền phát nhạc MQA',''),(282,35,'Tương thích:','Android, iOS (iPhone), Windows',''),(283,35,'Ứng dụng kết nối:','TONE Free',''),(284,35,'Tiện tích:','Chống nước, Đệm tai đi kèm',''),(285,35,'Hỗ trợ kết nối:','Bluetooth 5.0',''),(286,35,'Điều khiển bằng:','Cảm ứng chạm',''),(287,35,'Hãng','LG',''),(288,35,'','','Hộp sạc UVnano mới kháng khuẩn đến 99.9%, hỗ trợ sạc không dây.\nÂm thanh độ phân giải cao, chân thực với công nghệ của Meridian từ Anh Quốc.\nThiết kế vừa vặn, đệm silicone chống ồn, tích hợp micro kép để cuộc gọi rõ ràng hơn.\nChuẩn Bluetooth 5.0 với khoảng cách kết nối đến 10 m.\nKhả năng chống nước chuẩn IPX4 bảo vệ tai nghe.\nSạc qua cổng Type-C hoặc có thể sạc không dây.\nThời lượng pin lên đến 18 giờ khi kết hợp với hộp sạc, sạc nhanh 5 phút dùng thêm đến 1 giờ.\nDễ dàng tùy chỉnh và tìm kiếm tai nghe với ứng dụng TONE Free.'),(289,36,'Pin:','Dùng 12 giờ - Sạc 2 giờ',''),(290,36,'Cổng sạc:','Micro USB',''),(291,36,'Công nghệ âm thanh:','Quad Layer',''),(292,36,'Tương thích:','Android, iOS (iPhone), Windows',''),(293,36,'Điều khiển bằng:','Phím nhấn',''),(294,36,'Hãng','LG',''),(295,36,'','','Thiết kế gọn nhẹ, liền mạch tinh xảo và thanh lịch, nút tai có thể thu vào.\nÂm thanh được điều chỉnh bởi Harman Kardon, cho ra chất âm tốt nhất.\nCông nghệ Bluetooth 4.2 cho kết nối ổn định, mượt mà đến 10 m.\nTích hợp micro, có nút Google Assistant chuyên dụng.\nDung lượng pin 220 mAh, thời gian sạc 2 giờ, thời gian nghe nhạc 12 giờ, thời gian đàm thoại 13 giờ.'),(296,37,'Pin:','Dùng 13 giờ - Sạc 2 giờ',''),(297,37,'Cổng sạc:','Micro USB',''),(298,37,'Công nghệ âm thanh:','Quad Layer',''),(299,37,'Tương thích:','Android, iOS (iPhone), Windows',''),(300,37,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(301,37,'Điều khiển bằng:','Phím nhấn',''),(302,37,'Hãng','LG',''),(303,37,'','','Thiết kế dạng vòng cổ gọn nhẹ, đệm tai mềm êm ái.\nCông nghệ Quad Layer tiên tiến tạo nên sự hài hòa, cân bằng cho âm thanh.\nThông báo rung khi có cuộc gọi đến, tích hợp micro.\nCông nghệ bluetooth 4.1 cho kết nối ổn định, mượt mà đến 10m.\nDung lượng pin 210 mAh, thời gian sạc 2 giờ, thời gian nghe nhạc 13 giờ, thời gian đàm thoại 14 giờ.'),(304,38,'Pin:','Dùng 10 giờ - Sạc 2 giờ',''),(305,38,'Cổng sạc:','Micro USB',''),(306,38,'Tương thích:','Android, iOS (iPhone), Windows',''),(307,38,'Tiện ích:','Có mic thoại',''),(308,38,'Điều khiển bằng:','Phím nhấn',''),(309,38,'Hãng','Kanen',''),(310,38,'','','Công nghệ bluetooth 4.1 cho khoảng cách kết nối lên đến 10m.\nCó thể gọi nhanh, nghe nhạc, tạo cuộc hẹn, v.v.. thông qua Siri hay Google Voice.\nĐệm tai nghe dày, thoải mái khi sử dụng khoảng thời gian dài.\nDung lượng pin: 300 mAh, cho thời gian sử dụng có thể lên đến 10 giờ, thời gian sạc khoảng 2 giờ.'),(311,39,'Pin:','Dùng 18 giờ - Sạc 2 giờ',''),(312,39,'Cổng sạc:','Micro USB',''),(313,39,'Tương thích:','Android, iOS (iPhone), Windows',''),(314,39,'Tiện ích:','Có mic thoại',''),(315,39,'Điều khiển bằng:','Phím nhấn',''),(316,39,'Hãng','Kanen',''),(317,39,'','','Thiết kế hiện đại, năng động, có thể gấp gọn khi không sử dụng.\nKhoảng cách kết nối xa đến 10 m qua công nghệ Bluetooth 4.1. \nSử dụng liên tục trong 18 giờ, sạc đầy trong 2 giờ.\nDễ dàng điều khiển qua giọng nói với Siri, Google Voice.'),(318,40,'Jack cắm:','3.5 mm',''),(319,40,'Tương thích:','Android, iOS (iPhone), Windows',''),(320,40,'Tiện ích:','Có mic thoại',''),(321,40,'Điều khiển bằng:','Phím nhấn',''),(322,40,'Phím điều khiển:','Chuyển bài hát, Mic thoạiNghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(323,40,'Hãng','Kanen',''),(324,40,'','','Lớp đệm tai êm và dày, giúp đeo tai thoải mái và hạn chế bị rách.\nCó thể kéo dãn tai nghe 4 cm để vừa vặn hơn khi sử dụng.\nTương thích với hầu hết điện thoại hiện nay.\nDây dài lên đến 150 cm thoải mái để vừa dùng máy vừa nghe nhạc.'),(325,41,'Jack cắm:','3.5 mm',''),(326,41,'Tương thích:','Android, iOS (iPhone), Windows',''),(327,41,'Tiện ích:','Có mic thoại',''),(328,41,'Điều khiển bằng:','Phím nhấn',''),(329,41,'Phím điều khiển:','Chuyển bài hát, Mic thoạiNghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(330,41,'Hãng','Kanen',''),(331,41,'','','Có thể gấp gọn khi muốn cho vào trong balo.\nLớp đệm tai êm và dày, giúp đeo tai thoải mái và hạn chế bị rách.\nCó thể kéo dãn tai nghe 3 cm để vừa vặn hơn khi sử dụng.\nTương thích với hầu hết điện thoại hiện nay.\nCó nút nhận cuộc gọi, phát/dừng chơi nhạc, tăng giảm âm lượng.\nDây dài lên đến 1.5 m thoải mái để vừa dùng máy vừa nghe nhạc.'),(332,42,'Jack cắm:','3.5 mm',''),(333,42,'Tương thích:','Android, iOS (iPhone), Windows',''),(334,42,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(335,42,'Điều khiển bằng:','Phím nhấn',''),(336,42,'Phím điều khiển:','Chuyển bài hát, Mic thoạiNghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(337,42,'Hãng','Kanen',''),(338,42,'','','Thiết kế sang trọng, màu sắc thời trang, dây 1.2 m dẹt chống rối. \nĐệm tai êm ái, có 3 cặp dễ lựa chọn đeo vừa vặn.\nCó mic thoại, nút bấm để nghe/nhận cuộc gọi, phát/dừng chơi nhạc, tăng/giảm âm lượng.\nTrang bị jack cắm 3.5 mm phối ghép được với nhiều điện thoại, máy tính bảng.'),(339,43,'Jack cắm:','3.5 mm',''),(340,43,'Tương thích:','Android, iOS (iPhone), Windows',''),(341,43,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(342,43,'Điều khiển bằng:','Phím nhấn',''),(343,43,'Phím điều khiển:','Chuyển bài hát, Mic thoạiNghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(344,43,'Hãng','Kanen',''),(345,43,'','','Thiết kế bắt mắt, dây dẹt chống xoắn rối, dài 1.2 m.\nKết nối được với nhiều thiết bị có tích hợp cổng 3.5mm.\nMic thoại cho âm thanh trong trẻo, rõ nét.\nCó nút nhấn - nút gạt điều chỉnh tăng/giảm âm lượng, ngừng/chơi nhạc, chuyển bài, nhận cuộc gọi tiện lợi.\nThiết kế móc tai đảm bảo đeo tai nghe chắc chắn hơn.'),(346,44,'Jack cắm:','3.5 mm',''),(347,44,'Tương thích:','Android, iOS (iPhone), Windows',''),(348,44,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(349,44,'Điều khiển bằng:','Phím nhấn',''),(350,44,'Phím điều khiển:','Nghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(351,44,'Hãng','Awei',''),(352,44,'','','Thiết kế gọn nhẹ, dây dài 124 cm.\nDạng tai nghe nút cho khả năng cách âm tốt.\nJack cắm 3.5 mm tương thích với nhiều thiết bị.\nTích hợp mic thoại, nút công tắc để nhận cuộc gọi, dừng/phát chơi nhạc, tăng/giảm âm lượng.'),(353,45,'Jack cắm:','3.5 mm',''),(354,45,'Tương thích:','Android, iOS (iPhone), Windows',''),(355,45,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(356,45,'Điều khiển bằng:','Phím nhấn',''),(357,45,'Phím điều khiển:','Nghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(358,45,'Hãng','Awei',''),(359,45,'','','Thiết kế nhỏ gọn, dễ mang theo, có dây dài 134 cm.\nĐệm tai cao su cách âm tốt, cho âm thanh rõ ràng. \nJack 3.5mm dạng chữ L chịu lực, kết nối được nhiều thiết bị.\nTrang bị mic thoại, dễ dàng nhận cuộc gọi, tăng/giảm âm lượng, dừng/phát nhạc qua nút bấm.'),(360,46,'Jack cắm:','3.5 mm',''),(361,46,'Tương thích:','Android, iOS (iPhone), Windows',''),(362,46,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(363,46,'Điều khiển bằng:','Phím nhấn',''),(364,46,'Phím điều khiển:','Nghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(365,46,'Hãng','Awei',''),(366,46,'','','Thiết kế thời trang, nhỏ gọn, dễ dàng mang theo.\nCó jack cắm 3.5mm, tương thích với nhiều thiết bị.\nCó đệm tai cao su cho cảm giác dễ chịu, hạn chế tiếng ồn và có âm thanh ra tốt.\nNút điều khiển trên tai nghe tiện lợi.'),(367,47,'Jack cắm:','3.5 mm',''),(368,47,'Tương thích:','Android, iOS (iPhone), Windows',''),(369,47,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(370,47,'Điều khiển bằng:','Phím nhấn',''),(371,47,'Phím điều khiển:','Nghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(372,47,'Hãng','Awei',''),(373,47,'','','Thiết kế đẹp mắt, trọng lượng nhẹ, dây dài 1.34 m.\nĐệm tai bằng cao su chống ồn, đeo thoải mái.\nKết hợp được với các máy cổng 3.5 mm.\nCó nút nhấn tiện nhận cuộc gọi, tăng giảm âm lượng, dừng/phát nhạc.'),(374,48,'Jack cắm:','3.5 mm',''),(375,48,'Tương thích:','Android, iOS (iPhone), Windows',''),(376,48,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(377,48,'Điều khiển bằng:','Phím nhấn',''),(378,48,'Phím điều khiển:','Nghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(379,48,'Hãng','Awei',''),(380,48,'','','Kiểu dáng đơn giản, màu đen và bạc sành điệu.\nHỗ trợ mic thoại, âm thanh sống động, không bị vỡ tiếng.\nJack 3.5 mm thông dụng, chiều dài dây đến 1.2 m.\nCó nút chỉnh nhận cuộc gọi, tăng/giảm âm lượng, chuyển bài, ngừng/chơi nhạc,....'),(381,49,'Jack cắm:','3.5 mm',''),(382,49,'Tương thích:','Android, iOS (iPhone), Windows',''),(383,49,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(384,49,'Điều khiển bằng:','Phím nhấn',''),(385,49,'Phím điều khiển:','Nghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(386,49,'Hãng','Awei',''),(387,49,'','','Tương thích tốt với nhiều dòng điện thoại.\nTai nghe dạng nút giúp cách âm tốt với bên ngoài.\nCó nút ấn nhận cuộc gọi, ngừng/chơi nhạc, chuyển bài hát.\nDây dài 120 cm thoải mái để vừa dùng máy vừa nghe nhạc.'),(388,50,'Jack cắm:','3.5 mm',''),(389,50,'Tương thích:','Android, iOS (iPhone), Windows',''),(390,50,'Tiện ích:','Có mic thoại, Đệm tai đi kèm, Tai nghe nhét tai',''),(391,50,'Điều khiển bằng:','Phím nhấn',''),(392,50,'Phím điều khiển:','Nghe/nhận cuộc gọi, Phát/dừng chơi nhạc, Tăng/giảm âm lượng',''),(393,50,'Hãng','Awei',''),(394,50,'','','Có nút chỉnh tương thích với các dòng điện thoại khác nhau.\nTai nghe dạng nút giúp cách âm tốt với bên ngoài.\nCó nút ấn nhận cuộc gọi, ngừng/chơi nhạc.\nDây dài 120 cm thoải mái để vừa dùng máy vừa nghe nhạc.');
+INSERT INTO `product_desc` VALUES
+
+
+(8,'','DÃ¹ng 4.5 giá» - Sáº¡c 2 giá»','Thá»i gian tai nghe:',1),
+(9,'','DÃ¹ng 24 giá» - Sáº¡c 3 giá»','Thá»i gian há»™p sáº¡c:',1),
+(10,'','Lightning, Sáº¡c khÃ´ng dÃ¢y','Cá»•ng sáº¡c:',1),
+(11,'','Active Noise Cancellation, Adaptive EQ','CÃ´ng nghá»‡ Ã¢m thanh:',1),
+(12,'','Android, iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',1),
+(13,'','Chá»‘ng nÆ°á»›c, Chá»‘ng á»“n, CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',1),
+(14,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',1),
+(15,'','Apple','HÃ£ng',1),
+(16,'Thiáº¿t káº¿ in-ear hoÃ n toÃ n má»›i vÃ  Ä‘á»™c Ä‘Ã¡o.\nTÃ­ch há»£p cÃ´ng nghá»‡ chá»‘ng á»“n chá»§ Ä‘á»™ng (Active Noise Cancellation).\nChip H1 máº¡nh máº½, xá»­ lÃ½ Ã¢m thanh ká»¹ thuáº­t sá»‘ vá»›i Ä‘á»™ trá»… gáº§n nhÆ° báº±ng khÃ´ng.\nNghe nháº¡c Ä‘áº¿n 4.5 giá» khi báº­t chá»‘ng á»“n, 5 giá» khi táº¯t chá»‘ng á»“n.\nSá»­ dá»¥ng song song vá»›i há»™p sáº¡c cÃ³ thá»ƒ dÃ¹ng Ä‘Æ°á»£c Ä‘áº¿n 24 giá» nghe nháº¡c.\nHá»— trá»£ sáº¡c nhanh, cho thá»i gian sá»­ dá»¥ng Ä‘áº¿n 1 giá» chá»‰ vá»›i 5 phÃºt sáº¡c.\nHá»™p sáº¡c há»— trá»£ sáº¡c khÃ´ng dÃ¢y chuáº©n Qi, tiá»‡n lá»£i khi sáº¡c láº¡i.\nTrang bá»‹ chuáº©n chá»‘ng nÆ°á»›c IPX4, báº£o vá»‡ tai nghe an toÃ n dÆ°á»›i mÆ°a nhá» vÃ  má»“ hÃ´i.','','',1),
+(17,'','DÃ¹ng 20 giá» - Sáº¡c 3 giá»','Thá»i gian tai nghe:',2),
+(18,'','Lightning','Cá»•ng sáº¡c:',2),
+(19,'','Active Noise Cancellation, Adaptive EQ, Spatial Audio, Transparency Mode','CÃ´ng nghá»‡ Ã¢m thanh:',2),
+(20,'','Android, iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',2),
+(21,'','Chá»‘ng á»“n','Tiá»‡n Ã­ch:',2),
+(22,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',2),
+(23,'','Apple','HÃ£ng',2),
+(24,'AirPods Max tai nghe chá»¥p tai chá»‘ng á»“n chá»§ Ä‘á»™ng.\nSá»­ dá»¥ng chip H1 Apple cho káº¿t ná»‘i nhanh chÃ³ng.\nTrang bá»‹ Bluetooth 5.0 káº¿t ná»‘i mÆ°á»£t mÃ  khoáº£ng cÃ¡ch 10 m.\nTÃ­ch há»£p cÃ´ng nghá»‡ chá»‘ng á»“n ANC, Ã¢m thanh xuyÃªn Ã¢m (Transperency Mode).\nHá»— trá»£ Spatial Audio giÃºp táº¡o hiá»‡u á»©ng Ã¢m thanh vÃ²m khi xem phim vÃ  tráº£i nghiá»‡m ná»™i dung Dolby Atmos Ä‘Æ°á»£c tá»‘t hÆ¡n.\nDigital Crown Ä‘iá»u chá»‰nh linh hoáº¡t, nháº¡y bÃ©n.\nTÃ­ch há»£p trá»£ lÃ½ áº£o Siri Ä‘iá»u khiá»ƒn thÃªm tiá»‡n lá»£i.\nNghe nhÃ¢n cuá»™c gá»i trá»±c tiáº¿p tá»« tai nghe.\nThá»i gian sá»­ dá»¥ng 20 giá» khi sá»­ dá»¥ng chá»‘ng á»“n ANC vÃ  Transparency Mode \nSáº¡c nhanh 5 phÃºt cÃ³ thá»ƒ sá»­ dá»¥ng Ä‘Æ°á»£c 1.5 giá».','','',2),
+(25,'','3.5 mm','Jack cáº¯m:',3),
+(26,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',3),
+(27,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',3),
+(28,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',3),
+(29,'','Apple','HÃ£ng',3),
+(30,'Thiáº¿t káº¿ hiá»‡n Ä‘áº¡i, sang trá»ng vÃ  thoáº£i mÃ¡i.\nCÃ³ phÃ­m Ä‘iá»u chá»‰nh Ã¢m lÆ°á»£ng, nghe/nháº­n cuá»™c gá»i.\nCá»•ng 3 5mm phÃ¹ há»£p nhiá»u loáº¡i Ä‘iá»‡n thoáº¡i, mÃ¡y tÃ­nh báº£ng, laptop.','','',3),
+(31,'','DÃ¹ng 5 giá» - Sáº¡c 2 giá»','Pin:',4),
+(32,'','Lightning','Cá»•ng sáº¡c:',4),
+(33,'','Android, iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',4),
+(34,'','Siri','á»¨ng dá»¥ng káº¿t ná»‘i:',4),
+(35,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',4),
+(36,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',4),
+(37,'','Apple','HÃ£ng',4),
+(38,'Thiáº¿t káº¿ Ä‘Æ¡n giáº£n, thá»i trang vÃ  nhá» gá»n.\nTrang bá»‹ chip H1 hoÃ n toÃ n má»›i, cho tá»‘c Ä‘á»™ káº¿t ná»‘i, chuyá»ƒn Ä‘á»•i giá»¯a cÃ¡c thiáº¿t bá»‹ nhanh chÃ³ng.\nKÃ­ch hoáº¡t nhanh trá»£ lÃ½ áº£o Siri báº±ng cÃ¡ch nÃ³i \"Hey, Siri\".\nCÃ³ thá»ƒ sá»­ dá»¥ng nghe nháº¡c lÃªn Ä‘áº¿n 5 giá» (Ã¢m lÆ°á»£ng 50%) cho má»—i má»™t láº§n sáº¡c Ä‘áº§y.\nTÃ­ch há»£p cÃ´ng nghá»‡ sáº¡c nhanh hiá»‡n Ä‘áº¡i Sáº¡c nhanh 15 phÃºt cÃ³ thá»ƒ nghe nháº¡c 3 giá» (Ã¢m lÆ°á»£ng 50%).\nSá»­ dá»¥ng song song vá»›i há»™p sáº¡c cÃ³ thá»ƒ dÃ¹ng Ä‘Æ°á»£c lÃªn Ä‘áº¿n 24 giá».\nTÃ­nh nÄƒng nháº­n cuá»™c gá»i, kÃ­ch hoáº¡t Siri, nghe hoáº·c táº¡m dá»«ng Ä‘oáº¡n nháº¡c Ä‘ang phÃ¡t.','','',4),
+(39,'','DÃ¹ng 8 giá» - Sáº¡c 3 giá»','Thá»i gian nghe:',5),
+(40,'','DÃ¹ng 20 giá» - Sáº¡c 3 giá»','Thá»i gian há»™p sáº¡c:',5),
+(41,'','Type-C','Cá»•ng sáº¡c:',5),
+(42,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',5),
+(43,'','Chá»‘ng nÆ°á»›c, Chá»‘ng á»“n','Tiá»‡n Ã­ch:',5),
+(44,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',5),
+(45,'','Samsung','HÃ£ng',5),
+(46,'NÃ¢ng táº§m tráº£i nghiá»‡m Ã¢m vÃ  cháº¥t lÆ°á»£ng cuá»™c gá»i vá»›i chá»‘ng á»“n chá»§ Ä‘á»™ng (ANC).\nKáº¿t ná»‘i khÃ´ng dÃ¢y Bluetooth 5.0 dá»… dÃ ng vá»›i cÃ¡c thiáº¿t bá»‹ ngoÃ i, Ä‘Æ°á»ng truyá»n á»•n Ä‘á»‹nh.\nChuáº©n Ã¢m thanh studio vá»›i loa 2 chiá»u AKG máº¡nh máº½.\nTáº­n hÆ°á»Ÿng Ã¢m thanh vÃ²m lÃ´i cuá»‘n, chuáº©n Ä‘iá»‡n áº£nh tá»« 360 Audio.\nÄÃ m thoáº¡i rÃµ rÃ ng vá»›i há»‡ thá»‘ng mic vÃ  bá»™ pháº­n thu nháº­n giá»ng nÃ³i (Voice Pickup Unit).\nLoa 2 chiá»u (loa tráº§m 11mm, loa bá»•ng 6.5mm).\nKháº£ nÄƒng khÃ¡ng nÆ á»›c hiá»‡u quáº£ cÃ¹ng xáº¿p háº¡ng khÃ¡ng nÆ°á»›c IPX7.\nThá»i gian sá»­ dá»¥ng 5 giá» vÃ  13 giá» cÃ¹ng há»™p sáº¡c (báº­t chá»‘ng á»“n , sá»­ dá»¥ng 8 giá» vÃ  20 giá» cÃ¹ng há»™p sáº¡c (táº¯t chá»‘ng á»“n).','','',5),
+(47,'','3.5 mm','Jack cáº¯m:',6),
+(48,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',6),
+(49,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',6),
+(50,'','Mic thoáº¡i, Nghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','Äiá»u khiá»ƒn báº±ng:',6),
+(51,'','Samsung','HÃ£ng',6),
+(52,'Thiáº¿t káº¿ gá»n Ä‘áº¹p, cÃ³ 2 mÃ u Ä‘en vÃ  Ä‘á».\nDÃ¢y dÃ i 1.2 m, Ä‘á»‡m tai cÃ³ mÃ³c giÃºp Ä‘eo cháº¯c cháº¯n.\nÃ‚m thanh trong tráº»o, trung thá»±c.\nCÃ³ mic thoáº¡i, nÃºt chá»‰nh nháº­n cuá»™c gá»i, chuyá»ƒn bÃ i hÃ¡t, dá»«ng/chÆ¡i nháº¡c, tÄƒng/giáº£m Ã¢m lÆ°á»£ng','','',6),
+(53,'','DÃ¹ng 11 giá» - Sáº¡c 2 giá»','Thá»i gian nghe:',7),
+(54,'','DÃ¹ng 22 giá» - Sáº¡c 3 giá»','Thá»i gian há»™p sáº¡c:',7),
+(55,'','Type-C','Cá»•ng sáº¡c:',7),
+(56,'','Ambient Sound','CÃ´ng nghá»‡ Ã¢m thanh:',7),
+(57,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',7),
+(58,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',7),
+(59,'','Samsung','HÃ£ng',7),
+(60,'Thiáº¿t káº¿ thá»i thÆ°á»£ng, Ä‘eo vá»«a váº·n, phÃ¹ há»£p cho má»i Ä‘á»‘i tÆ°á»£ng sá»­ dá»¥ng. \nChuáº©n Ã¢m thanh studio vá»›i loa 2 chiá»u AKG máº¡nh máº½.\nKáº¿t ná»‘i khÃ´ng dÃ¢y Bluetooth 5.0 dá»… dÃ ng vá»›i cÃ¡c thiáº¿t bá»‹.\nThá»i gian sá»­ dá»¥ng 11 giá» vÃ 22 giá» cÃ¹ng há»™p sáº¡c.\nSáº¡c nhanh 3 phÃºt cung cáº¥p Ä‘áº¿n 1 giá» sá»­ dá»¥ng.\nCÃ³ thá»ƒ sáº¡c ngay vá»›i thiáº¿t bá»‹ sáº¡c khÃ´ng dÃ y chuáº©n Qi báº¥t kÃ¬.','','',7),
+(61,'','DÃ¹ng 7.5 giá» - Sáº¡c 1.5 giá»','Thá»i gian nghe:',8),
+(62,'','DÃ¹ng 29 giá» - Sáº¡c 1.5 giá»','Thá»i gian há»™p sáº¡c:',8),
+(63,'','Type-C','Cá»•ng sáº¡c:',8),
+(64,'','Active Noise Cancellation, Ambient Sound','CÃ´ng nghá»‡ Ã¢m thanh:',8),
+(65,'','Android','TÆ°Æ¡ng thÃ­ch:',8),
+(66,'','Chá»‘ng nÆ°á»›c IPX2, CÃ³ mic thoáº¡i','Tiá»‡n tÃ­ch:',8),
+(67,'','Bluetooth 5.2','Há»— trá»£ káº¿t ná»‘i:',8),
+(68,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',8),
+(69,'','Samsung','HÃ£ng',8),
+(70,'Thiáº¿t káº¿ thá»i thÆ°á»£ng, cÃ¡ tÃ­nh.\nCháº¥t Ã¢m chuáº©n studio vá»›i loa 2 chiá»u.\nHiá»‡u quáº£ chá»‘ng á»“n lÃªn Ä‘áº¿n 98% \nÄÃ m thoáº¡i dá»… dÃ ng vá»›i 3 micro vÃ  bá»™ cáº£m biáº¿n nháº­n diá»‡n giá»ng nÃ³i.\nÄá»“ng bá»™ vá»›i cÃ¡c thiáº¿t bá»‹ Samsung Galaxy.\nThá»i gian nghe nháº¡c: Khoáº£ng 5 giá» (báº­t chá»‘ng á»“n), khoáº£ng 7.5 giá» (táº¯t chá»‘ng á»“n).\nThá»i gian Ä‘Ã m thoáº¡i: Khoáº£ng 3.5 giá» (báº­t chá»‘ng á»“n), khoáº£ng 3.5 giá» (táº¯t chá»‘ng á»“n).\n 5 phÃºt sáº¡c cho 1 giá» chÆ¡i nháº¡c.\nÄáº¡t tiÃªu chuáº©n chá»‘ng nÆ°á»›c IPX2.\nÄiá»u khiá»ƒn cáº£m á»©ng dá»«ng/phÃ¡t, tráº£ lá»i cuá»™c gá»i, chuyá»ƒn bÃ i.','','',8),
+(71,'','DÃ¹ng 9 giá» - Sáº¡c 2 giá»','Pin:',9),
+(72,'','Micro USB','Cá»•ng sáº¡c:',9),
+(73,'','Android, iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',9),
+(74,'','CÃ³ mic thoáº¡i, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',9),
+(75,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',9),
+(76,'','Samsung','HÃ£ng',9),
+(77,'Kiá»ƒu dÃ¡ng nhá» gá»n, vá» nhá»±a giáº£ da sang trá»ng.\nChuáº©n Bluetooth V3.0 káº¿t ná»‘i mÆ°á»£t mÃ  tá»‘i Ä‘a Ä‘áº¿n 10 m.\nPhá»‘i ghÃ©p vá»›i 2 thiáº¿t bá»‹ cÃ¹ng lÃºc.\nÃ‚m thanh rÃµ rÃ ng vá»›i cÃ´ng nghá»‡ giáº£m táº¡p Ã¢m.\nSá»­ dá»¥ng kÃ©o dÃ i Ä‘áº¿n 9 tiáº¿ng,sáº¡c trong 2 tiáº¿ng.','','',9),
+(78,'','DÃ¹ng 9 giá» - Sáº¡c 3 giá»','Pin:',10),
+(79,'','Micro USB','Cá»•ng sáº¡c:',10),
+(80,'','Android, iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',10),
+(81,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',10),
+(82,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',10),
+(83,'','Samsung','HÃ£ng',10),
+(84,' Äá»‡m tai Ä‘Æ°á»£c thiáº¿t káº¿ má»m máº¡i, linh hoáº¡t.\nCung cáº¥p hÆ¡n 9 giá» nghe nháº¡c, 9 giá» Ä‘Ã m thoáº¡i vÃ  300 giá» cho thá»i gian chá».\nCháº¥t lÆ°á»£ng Ã¢m thanh tuyá»‡t háº£o nhá» cÃ´ng nghá»‡ giáº£m tiáº¿ng á»“n NR vÃ  EC.\nKáº¿t ná»‘i nam chÃ¢m giá»¯a hai Ä‘áº§u tai nghe cá»§a Level U sáº½ giá»¯ tai nghe khi khÃ´ng sá»­ dá»¥ng.\nDung lÆ°á»£ng pin 200 mAh (lÃµi pin Li-Ion). Thá»i gian sáº¡c trung bÃ¬nh khoáº£ng 3 giá».','','',10),
+(85,'','DÃ¹ng 8 giá» - Sáº¡c 1.5 giá»','Thá»i gian nghe:',11),
+(86,'','DÃ¹ng 16 giá» - Sáº¡c 2.5 giá»','Thá»i gian há»™p sáº¡c:',11),
+(87,'','Type-C','Cá»•ng sáº¡c:',11),
+(88,'','Chá»‘ng á»“n HD QN1','CÃ´ng nghá»‡ Ã¢m thanh:',11),
+(89,'','Android, iOS (iPhone, iPad), Windows','TÆ°Æ¡ng thÃ­ch:',11),
+(90,'','Chá»‘ng nÆ°á»›c, Chá»‘ng á»“n','Tiá»‡n tÃ­ch:',11),
+(91,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',11),
+(92,'','Sony','HÃ£ng',11),
+(93,'Kiá»ƒu dÃ¡ng nhá» gá»n thiáº¿t káº¿ sang trá»ng.\nThÆ°á»Ÿng thá»©c Ã¢m thanh Hi-Res cÃ³ cháº¥t lÆ°á»£ng vÆ°á»£t trá»™i nhá» cÃ´ng nghá»‡ LDAC.\nKháº£ nÄƒng chá»‘ng á»“n tuyá»‡t vá»i nhá» con chip V1 tháº¿ há»‡ má»›i.\nDung lÆ°á»£ng pin lá»›n, há»— trá»£ sáº¡c nhanh phÃºt dÃ¹ng 60 phÃºt.\nThÆ°á»Ÿng thá»©c trá»n váº¹n bÃ i hÃ¡t nhá» loáº¡i bá» tiáº¿ng á»“n cá»§a giÃ³.\nTáº¯t nháº¡c khi báº¡n trÃ² chuyá»‡n vá»›i ngÆ°á»i xung quanh.\nChuáº©n chá»‘ng nÆ°á»›c IPX4 báº£o vá»‡ tai nghe an toÃ n trÆ°á»›c nÆ°á»›c mÆ°a vÃ  má»“ hÃ´i.\nDá»… dÃ ng tiáº¿p nháº­n thÃ´ng tin hÆ¡n vá»›i trá»£ lÃ½ áº£o.','','',11),
+(94,'','DÃ¹ng 9 giá» - Sáº¡c 2.5 giá»','Thá»i gian nghe:',12),
+(95,'','DÃ¹ng 18 giá» - Sáº¡c 3 giá»','Thá»i gian há»™p sáº¡c:',12),
+(96,'','Type-C','Cá»•ng sáº¡c:',12),
+(97,'','Extra Bass','CÃ´ng nghá»‡ Ã¢m thanh:',12),
+(98,'','Android, iOS (iPhone, iPad), Windows','TÆ°Æ¡ng thÃ­ch:',12),
+(99,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Chá»‘ng nÆ°á»›c & bá»¥i IP54','Tiá»‡n tÃ­ch:',12),
+(100,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',12),
+(101,'','Sony','HÃ£ng',12),
+(102,'Thiáº¿t káº¿ khÃ´ng dÃ¢y thá»i thÆ°á»£ng, cÃ³ nÃºt Ä‘á»‡m Ãªm tai.\nTÃ¡i hiá»‡n chi tiáº¿t tá»«ng dáº£i Ã¢m vá»›i cÃ´ng nghá»‡ Extra Bass.\nTrang bá»‹ chuáº©n khÃ¡ng nÆ°á»›c IPX4 chá»‘ng tháº¥m nÆ°á»›c cho tai nghe hiá»‡u quáº£.\nTÃ¹y chá»‰nh nghe nháº¡c, gá»i ráº£nh tay tÆ°Æ¡ng tÃ¡c vá»›i Google Assistant, Siri tiá»‡n lá»£i.\nThá»i gian sá»­ dá»¥ng tá»‘i Ä‘a lÃªn tá»›i 18 tiáº¿ng.\nKáº¿t ná»‘i Bluetooth 5.0 á»•n Ä‘á»‹nh vá»›i khoáº£ng cÃ¡ch xa Ä‘áº¿n 10 m.','','',12),
+(103,'','DÃ¹ng 9 giá» - Sáº¡c 2.5 giá»','Thá»i gian nghe:',13),
+(104,'','DÃ¹ng 26 giá» - Sáº¡c 3 giá»','Thá»i gian há»™p sáº¡c:',13),
+(105,'','Type-C','Cá»•ng sáº¡c:',13),
+(106,'','Extra Bass','CÃ´ng nghá»‡ Ã¢m thanh:',13),
+(107,'','Android, iOS (iPhone, iPad), Windows','TÆ°Æ¡ng thÃ­ch:',13),
+(108,'','Sony Headphones Connect','á»¨ng dá»¥ng káº¿t ná»‘i:',13),
+(109,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Chá»‘ng nÆ°á»›c & bá»¥i IP54','Tiá»‡n tÃ­ch:',13),
+(110,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',13),
+(111,'','Sony','HÃ£ng',13),
+(112,'Thiáº¿t káº¿ sang trá»ng, Ãªm Ã¡i vÃ  cháº¯c cháº¯n khi sá»­ dá»¥ng, nhiá»u cá»¡ Ä‘á»‡m tai thay Ä‘á»•i theo ngÆ°á»i dÃ¹ng.\nChuáº©n Ã¢m thanh Extra Bass Ä‘á»™c quyá»n cá»§a Sony cho Ã¢m bass tráº§m sÃ¢u láº¯ng vÃ  máº¡nh máº½.\nKáº¿t ná»‘i khÃ´ng dÃ¢y Bluetooth 5.0 á»•n Ä‘á»‹nh vá»›i pháº¡m vi xa Ä‘áº¿n 10 m.\nÄiá»u khiá»ƒn cáº£m á»©ng touch control, á»©ng dá»¥ng Ä‘iá»u khiá»ƒn Sony Connect Headphone (iOS Android) tÃ¹y chá»‰nh tÃ­nh nÄƒng theo sá»Ÿ thÃ­ch.\nKhÃ¡ng nÆ°á»›c vÃ  bá»¥i chuáº©n IP55 thoáº£i mÃ¡i sá»­ dá»¥ng ngoÃ i trá»i, khi luyá»‡n táº­p.\nChá»‘ng á»“n chá»§ Ä‘á»™ng (ANC) cho tráº£i nghiá»‡m Ã¢m nháº¡c hoÃ n háº£o nháº¥t.\nThá»i gian sá»­ dá»¥ng 9 giá» (13 giá» khi táº¯t chá»‘ng á»“n), thÃªm 9 giá» cÃ¹ng há»™p sáº¡c (13 giá» khi táº¯t chá»‘ng á»“n).\nThá»i gian sáº¡c 2.5 giá», sáº¡c nhanh 10 phÃºt cho sá»­ dá»¥ng thÃªm Ä‘áº¿n 60 phÃºt.','','',13),
+(113,'','DÃ¹ng 30 giá» - Sáº¡c 3 giá»','Pin:',14),
+(114,'','Type-C','Cá»•ng sáº¡c:',14),
+(115,'','Chá»‘ng á»“n HD QN1','CÃ´ng nghá»‡ Ã¢m thanh:',14),
+(116,'','Android, iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',14),
+(117,'','Chá»‘ng á»“n','Tiá»‡n Ã­ch:',14),
+(118,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',14),
+(119,'','Sony','HÃ£ng',14),
+(120,'Thiáº¿t káº¿ tráº» trung, gá»n nháº¹ Ä‘áº½ dÃ ng mang theo bÃªn mÃ¬nh.\nCháº¥t Ã¢m chÃ¢n thá»±c, sÃ¢u láº¯ng vá»›i mÃ ng loa 40 mm, mÃ ng cháº¯n Polymer tinh thá»ƒ lá»ng (LCD) vÃ  cÃ´ng nghá»‡ Hi-Res Audio.\nTá»± Ä‘á»™ng ngá»«ng phÃ¡t nháº¡c khi báº¡n trÃ² chuyá»‡n vÃ  phÃ¡t nháº¡c láº¡i khi báº¡n ngá»«ng nÃ³i chuyá»‡n.\nTá»± Ä‘á»™ng Ä‘iá»u chá»‰nh Ã¢m thanh cho phÃ¹ há»£p vá»›i hÃ nh Ä‘á»™ng cá»§a báº¡n, Ä‘em Ä‘áº¿n tráº£i nghiá»‡m tuyá»‡t vá»i.\nTá»± Ä‘á»™ng ngá»«ng phÃ¡t nháº¡c khi báº¡n thÃ¡o tai nghe ra.\nHáº¡ tháº¥p Ã¢m lÆ°á»£ng chá» vá»›i má»™t cÃ¡i cháº¡m vÃ o tai nghe.\nThá»a sá»©c nghe nháº¡c cáº£ ngÃ y dÃ i vá»›i thá»i lÆ°á»£ng pin khá»§ng Ä‘áº¿n 30 giá», vÃ  sáº¡c láº¡i trong 3 giá».\nCÃ´ng nghá»‡ chá»‘ng á»“n HD QN1 cho cháº¥t lÆ°á»£ng Ã¢m hoÃ n háº£o khi thÆ°á»Ÿng thá»©c.\nKiá»ƒm soÃ¡t viá»‡c váº­n hÃ nh cá»§a tai nghe má»™t cÃ¡ch nhanh chÃ³ng vÃ  Ä‘Æ¡n giáº£n.','','',14),
+(121,'','DÃ¹ng 30 giá» - Sáº¡c 7 giá»','Pin:',15),
+(122,'','Type-C','Cá»•ng sáº¡c:',15),
+(123,'','Extra Bass','CÃ´ng nghá»‡ Ã¢m thanh:',15),
+(124,'','Android, iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',15),
+(125,'','Sony Headphones Connect','á»¨ng dá»¥ng káº¿t ná»‘i:',15),
+(126,'','Chá»‘ng á»“n','Tiá»‡n Ã­ch:',15),
+(127,'','Cáº£m á»©ng cháº¡m, PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',15),
+(128,'','Sony','HÃ£ng',15),
+(129,'Äá»‡m tai dÃ y, Ãªm Ã¡i, mang láº¡i cáº£m giÃ¡c thoáº£i mÃ¡i khi Ä‘eo.\nÃ‚m thanh bÃ¹ng ná»• vá»›i EXTRA BASS vÃ  cÃ´ng nghá»‡ chá»‘ng á»“n ká»¹ thuáº­t sá»‘.\nKáº¿t ná»‘i khÃ´ng dÃ¢y vá»›i cÃ´ng nghá»‡ káº¿t ná»‘i 1 cháº¡m NFC vÃ  Bluetooth 4.2.\nTÃ­ch há»£p trá»£ lÃ½ giá»ng nÃ³i Google Assistant tiá»‡n lá»£i, Amazon Alexa vÃ  Siri.\nÄiá»u chá»‰nh Ã¢m thanh á»©ng dá»¥ng Sony | Headphones Connect.\nThá»i gian sá»­ dá»¥ng khoáº£ng 30 giá», sáº¡c Ä‘áº§y 7 giá».\nSáº¡c nhanh trong 10 phÃºt Ä‘á»ƒ cÃ³ thá»ƒ nghe nháº¡c thÃªm 60 phÃºt.\nTrang bá»‹ micro há»— trá»£ Ä‘Ã m thoáº¡i vÃ  nhiá»u nÃºt tÃ­nh nÄƒng tiá»‡n lá»£i.','','',15),
+(130,'','DÃ¹ng 35 giá» - Sáº¡c 4.5 giá»','Pin:',16),
+(131,'','Type-C','Cá»•ng sáº¡c:',16),
+(132,'','Android, iOS (iPhone), MacOS (Macbook, iMac), Windows','TÆ°Æ¡ng thÃ­ch:',16),
+(133,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',16),
+(134,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',16),
+(135,'','Sony','HÃ£ng',16),
+(136,'Thiáº¿t káº¿ Ä‘áº¹p máº¯t, cÃ³ thá»ƒ gáº­p pháº§n Ä‘á»‡m tai, gá»n gÃ ng dá»… mang theo.\nKáº¿t ná»‘i Bluetooth 5.0 á»•n Ä‘á»‹nh, tiá»‡n lá»£i, khoáº£ng cÃ¡ch káº¿t ná»‘i tá»‘i Ä‘a lÃ  10 m.\nÄá»‡m tai nghe dÃ y dáº·n, Ãªm Ã¡i khi Ä‘eo trong thá»i gian dÃ i.\nSáº¡c láº¡i trong 4.5 giá», thá»i lÆ°á»£ng sá»­ dá»¥ng pin cá»±c khá»§ng lÃªn Ä‘áº¿n 35 giá» (sáº¡c 10 phÃºt cÃ³ thá»ƒ nghe thÃªm Ä‘áº¿n 90 phÃºt).\nTÃ­ch há»£p micro Ä‘Ã m thoáº¡i tiá»‡n lá»£i, cÃ³ thá»ƒ nháº­n cuá»™c gá»i dá»… dÃ ng mÃ  khÃ´ng cáº§n thao tÃ¡c trÃªn Ä‘iá»‡n thoáº¡i.\nTrang bá»‹ cÃ¡c nÃºt nháº¥n nhÆ°: Nháº­n cuá»™c gá»i, phÃ¡t/dá»«ng chÆ¡i nháº¡c, chuyá»ƒn bÃ i hÃ¡t, tÄƒng/giáº£m Ã¢m lÆ°á»£ng.','','',16),
+(137,'','3.5 mm','Jack cáº¯m:',17),
+(138,'','Android, Windows','TÆ°Æ¡ng thÃ­ch:',17),
+(139,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',17),
+(140,'','PhÃ­m nháº¥n, Chuyá»ƒn bÃ i hÃ¡t, Mic thoáº¡iNghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c','Äiá»u khiá»ƒn báº±ng:',17),
+(141,'','Sony','HÃ£ng',17),
+(142,'Thiáº¿t káº¿ hiá»‡n Ä‘áº¡i, Ä‘á»‡m tai lá»›n, má»m, thoáº£i mÃ¡i khi Ä‘eo.\nQuai Ä‘eo tai nghe cÃ³ thá»ƒ kÃ©o dÃ£n 4.5 cm.\nTÃ¡i táº¡o Ã¢m thanh trong tráº»o, rÃµ nÃ©t.\nDÃ¢y dÃ i 1.2 m, jack cáº¯m 3.5 mm thÃ´ng dá»¥ng.','','',17),
+(143,'','DÃ¹ng 15 giá» - Sáº¡c 3 giá»','Pin:',18),
+(144,'','Type-C','Cá»•ng sáº¡c:',18),
+(145,'','Extra Bass','CÃ´ng nghá»‡ Ã¢m thanh:',18),
+(146,'','Android, iOS (iPhone), MacOS (Macbook, iMac), Windows','TÆ°Æ¡ng thÃ­ch:',18),
+(147,'','Chá»‘ng nÆ°á»›c, CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',18),
+(148,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',18),
+(149,'','Sony','HÃ£ng',18),
+(150,'Thiáº¿t káº¿ gá»n Ä‘áº¹p, kiá»ƒu vÃ²ng cá»• thoáº£i mÃ¡i, cÃ³ mÃ³c cá»‘ Ä‘á»‹nh kÃ¨m Ä‘á»‡m Ãªm dá»… dÃ¹ng.\nChá»‘ng tháº¥m nÆ°á»›c chuáº©n IPX5 báº£o vá»‡ tai nghe khi táº­p luyá»‡n, tiáº¿p xÃºc vá»›i nÆ°á»›c.\nÃ‚m thanh sÃ¢u láº¯ng vá»›i cÃ´ng nghá»‡ Extra Bass hiá»‡n Ä‘áº¡i.\nDá»… dÃ ng tÃ¹y chá»‰nh tÃ¡c vá»¥ nghe nháº¡c, gá»i ráº£nh tay, tÆ°Æ¡ng tÃ¡c vá»›i Google Assistant, Siri.\nDÃ¹ng má»i lÃºc má»i nÆ¡i vá»›i thá»i gian tá»‘i Ä‘a 15 tiáº¿ng.\nKáº¿t ná»‘i Bluetooth 5.0 vá»›i khoáº£ng cÃ¡ch 10 m, Ä‘Æ°á»ng truyá»n á»•n Ä‘á»‹nh.','','',18),
+(151,'','DÃ¹ng 8.5 giá» - Sáº¡c 2.5 giá»','Pin:',19),
+(152,'','Micro USB','Cá»•ng sáº¡c:',19),
+(153,'','Extra Bass','CÃ´ng nghá»‡ Ã¢m thanh:',19),
+(154,'','Android, iOS (iPhone), MacOS (Macbook, iMac), Windows','TÆ°Æ¡ng thÃ­ch:',19),
+(155,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',19),
+(156,'','NFC, Bluetooth 4.1','Há»— trá»£ káº¿t ná»‘i:',19),
+(157,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',19),
+(158,'','Sony','HÃ£ng',19),
+(159,'ÄÆ°á»£c thiáº¿t káº¿ bá»n vÃ  cá»©ng cÃ¡p phÃ¹ há»£p trong hoáº¡t Ä‘á»™ng thá»ƒ thao.\nSá»­ dá»¥ng cÃ´ng nghá»‡ EXTRA BASS giÃºp tÄƒng cÆ°á»ng Ã¢m tráº§m, phÃ¹ há»£p cho cÃ¡c dÃ²ng nháº¡c Ä‘iá»‡n tá»­.\nThiáº¿t káº¿ IPX4 chá»‘ng tia nÆ°á»›c báº¯n phÃ¹ há»£p Ä‘á»ƒ sá»­ dá»¥ng cho má»i thá»i tiáº¿t.\nKáº¿t ná»‘i khÃ´ng dÃ¢y vá»›i Bluetooth 4.1, khoáº£ng cÃ¡ch káº¿t ná»‘i Ä‘áº¿n 10 m.\nMÃ³c cá»‘ Ä‘á»‹nh giÃºp giá»¯ tai nghe náº±m á»Ÿ Ä‘Ãºng vá»‹ trÃ­.\nMá»™t micro tÃ­ch há»£p Ä‘á»ƒ thá»±c hiá»‡n cuá»™c gá»i ráº£nh tay.\nThá»i gian Ä‘Ã m thoáº¡i/nghe nháº¡c cÃ³ thá»ƒ lÃªn Ä‘áº¿n 8.5 giá», thá»i gian sáº¡c khoáº£ng 2.5 giá».\nThá»i gian chá» cÃ³ thá»ƒ lÃªn Ä‘áº¿n 200 giá» ','','',19),
+(160,'','DÃ¹ng 8 giá» - Sáº¡c 3 giá»','Thá»i gian nghe:',20),
+(161,'','DÃ¹ng 16 giá» - Sáº¡c 3 giá»','Thá»i gian há»™p sáº¡c:',20),
+(162,'','Type-C','Cá»•ng sáº¡c:',20),
+(163,'','Active Noise Cancelling, Transparency Mode','CÃ´ng nghá»‡ Ã¢m thanh:',20),
+(164,'','Android, iOS (iPhone, iPad)','TÆ°Æ¡ng thÃ­ch:',20),
+(165,'','Bluetooth TWS','á»¨ng dá»¥ng káº¿t ná»‘i:',20),
+(166,'','Chá»‘ng á»“n, Äá»‡m tai Ä‘i kÃ¨m','Tiá»‡n tÃ­ch:',20),
+(167,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',20),
+(168,'','Beats','HÃ£ng',20),
+(169,'Thiáº¿t káº¿ hÃ¬nh báº§u dá»¥c láº¡ máº¯t, 2 mÃ u Ä‘en - tráº¯ng thá»i trang, Ä‘eo vá»«a váº·n.\nCháº¥t Ã¢m máº¡nh máº½, cÃ¢n báº±ng. \nHá»— trá»£ Bluetooth 5.0 Class-1 cho káº¿t ná»‘i nhanh chÃ³ng.\nSá»­ dá»¥ng phÃ¹ há»£p hoÃ n cáº£nh vá»›i cÃ´ng nghá»‡ Chá»‘ng á»“n chá»§ Ä‘á»™ng ANC vÃ  Transparency mode (XuyÃªn Ã¢m).\nTai nghe dÃ¹ng Ä‘Æ°á»£c 8 tiáº¿ng, há»™p sáº¡c 16 tiáº¿ng, sáº¡c nhanh Fast Fuel 5 phÃºt cho 1 tiáº¿ng sá»­ dá»¥ng.\nYÃªn tÃ¢m luyá»‡n táº­p vá»›i tiÃªu chuáº©n chá»‘ng nÆ°á»›c IPX4.\nPhÃ­m nháº¥n dá»… chá»‰nh phÃ¡t/dá»«ng nháº¡c, báº­t trá»£ lÃ½ áº£o, nháº­n cuá»™c gá»i,...','','',20),
+(170,'','DÃ¹ng 9 giá» - Sáº¡c 3 giá»','Thá»i gian nghe:',21),
+(171,'','DÃ¹ng 24 giá» - Sáº¡c 3 giá»','Thá»i gian há»™p sáº¡c:',21),
+(172,'','Lightning','Cá»•ng sáº¡c:',21),
+(173,'','Android, iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',21),
+(174,'','Siri','á»¨ng dá»¥ng káº¿t ná»‘i:',21),
+(175,'','Chá»‘ng nÆ°á»›c, CÃ³ mic thoáº¡i','Tiá»‡n tÃ­ch:',21),
+(176,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',21),
+(177,'','Beats','HÃ£ng',21),
+(178,'TÃ­ch há»£p chip H1 cho tá»‘c Ä‘á»™ káº¿t ná»‘i, chuyá»ƒn Ä‘á»•i, dÃ¹ng á»•n Ä‘á»‹nh.\nTrang bá»‹ cáº£m biáº¿n Auto Play khi bá» tai, nháº¡c sáº½ táº¡m dá»«ng phÃ¡t ngay.\nCá»•ng sáº¡c Lighting chuáº©n hÃ£ng, gá»i trá»£ lÃ½ áº£o Siri thÃ´ng qua kháº©u lá»‡ch \"Hey Siri\" quen thuá»™c.\nChuáº©n chá»‘ng nÆ°á»›c, má»“ hÃ´i IP57 yÃªn tÃ¢m khi chÆ¡i thá»ƒ thao cÆ°á»ng Ä‘á»™ cao.\nThá»i gian nghe nháº¡c vÃ  Ä‘Ã m thoáº¡i lÃªn tá»›i 9 giá» vÃ  káº¿t há»£p há»™p sáº¡c lÃ  24 giá».\nCÃ³ tÃ­nh nÄƒng Fast Fuel phÃ¡t nháº¡c 1.5 giá» sau khi sáº¡c 5 phÃºt vÃ  4.5 giá» phÃ¡t nháº¡c khi sáº¡c sau 15 phÃºt.','','',21),
+(179,'','DÃ¹ng 40 giá» - Sáº¡c 3 giá»','Thá»i gian tai nghe:',22),
+(180,'','Micro USB','Cá»•ng sáº¡c:',22),
+(181,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',22),
+(182,'','Siri','á»¨ng dá»¥ng káº¿t ná»‘i:',22),
+(183,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',22),
+(184,'','Beats','HÃ£ng',22),
+(185,'Thiáº¿t káº¿ gá»n nháº¹, sang trá»ng, Ä‘á»‡m tai má»m thoáº£i mai khi Ä‘eo.\nKáº¿t ná»‘i khÃ´ng dÃ¢y Bluetooth 4.0 mÆ°á»£t mÃ  xa Ä‘áº¿n 10 m. \nSá»­ dá»¥ng chip Apple W1 táº¡o Ã¢m thanh máº¡nh máº½, cháº¥t lÆ°á»£ng cao.\nThá»i gian sá»­ dá»¥ng 40 giá» liÃªn tá»¥c sau 1 láº§n sáº¡c.\nTÃ­nh nÄƒng Fast Fuel sáº¡c nhanh 5 phÃºt sá»­ dá»¥ng Ä‘Æ°á»£c 3 giá».','','',22),
+(186,'','DÃ¹ng 22 giá» - Sáº¡c 3 giá»','Thá»i gian tai nghe:',23),
+(187,'','Micro USB','Cá»•ng sáº¡c:',23),
+(188,'','Active Noise Cancelling','CÃ´ng nghá»‡ Ã¢m thanh:',23),
+(189,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',23),
+(190,'','Chá»‘ng á»“n','Tiá»‡n Ã­ch:',23),
+(191,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',23),
+(192,'','Beats','HÃ£ng',23),
+(193,'Thiáº¿t káº¿ gá»n nháº¹, tinh táº¿, Ä‘á»‡m tai má»m thoáº£i mÃ¡i khi Ä‘eo.\nKáº¿t ná»‘i khÃ´ng dÃ¢y vá»›i Bluetooth 4.0, khoáº£ng cÃ¡ch káº¿t ná»‘i Ä‘áº¿n 10 m.\nSá»­ dá»¥ng chip Apple W1 má»›i káº¿t ná»‘i nhanh vÃ  á»•n Ä‘á»‹nh, Ã¢m thanh máº¡nh máº½.\nTrang bá»‹ cÃ´ng nghá»‡ chá»‘ng á»“n chá»§ Ä‘á»™ng (Pure Active Noise Cancelling).\nThá»i gian sá»­ dá»¥ng 22 giá» (báº­t chá»‘ng á»“n), 40 giá» (táº¯t chá»‘ng á»“n).\nTÃ­nh nÄƒng Fast Fuel sáº¡c nhanh 10 phÃºt sá»­ dá»¥ng Ä‘Æ°á»£c 3 giá».','','',23),
+(194,'','DÃ¹ng 12 giá» - Sáº¡c 2 giá»','Pin:',24),
+(195,'','Audio Sharing','CÃ´ng nghá»‡ Ã¢m thanh:',24),
+(196,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',24),
+(197,'','Äá»‡m tai Ä‘i kÃ¨m','Tiá»‡n Ã­ch:',24),
+(198,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',24),
+(199,'','Beats','HÃ£ng',24),
+(200,'Thiáº¿t káº¿ gá»n nháº¹, phÃ¹ há»£p vá»›i cÃ¡c hoáº¡t Ä‘á»™ng thá»ƒ thao.\nTÃ­ch há»£p chip Apple W1 cho Ã¢m thanh máº¡nh máº½, cháº¥t lÆ°á»£ng cao.\nThá»i gian sá»­ dá»¥ng 12 giá» liÃªn tá»¥c sau 1 láº§n sáº¡c.\nTÃ­nh nÄƒng Fast Fuel sáº¡c nhanh 10 phÃºt sá»­ dá»¥ng Ä‘Æ°á»£c 1.5 giá».','','',24),
+(201,'','DÃ¹ng 12 giá» - Sáº¡c 2 giá»','Pin:',25),
+(202,'','Micro USB','Cá»•ng sáº¡c:',25),
+(203,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',25),
+(204,'','Chá»‘ng nÆ°á»›c','Tiá»‡n Ã­ch:',25),
+(205,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',25),
+(206,'','Beats','HÃ£ng',25),
+(207,'Thiáº¿t káº¿ nÄƒng Ä‘á»™ng, 2 phiÃªn báº£n mÃ u Ä‘en - Ä‘en Ä‘á» lá»±a chá»n tÃ¹y thÃ­ch.  \nCáº£i thiá»‡n cháº¥t lÆ°á»£ng Ã¢m thanh tá»‘i Æ°u vá»›i chip Apple W1. \nThá»i gian sá»­ dá»¥ng liÃªn tá»¥c Ä‘áº¿n 12 giá» sau 1 láº§n sáº¡c.\nTÃ­nh nÄƒng Fast Fuel sáº¡c nhanh 5 phÃºt sá»­ dá»¥ng Ä‘Æ°á»£c trong 1 giá».\nDual-Driver mang Ä‘áº¿n hiá»‡u suáº¥t Ã¢m thanh cao.\nChuáº©n IPX4 chá»‘ng má»“ hÃ´i vÃ  tia nÆ°á»›c báº¯n.','','',25),
+(208,'','DÃ¹ng 6 giá» - Sáº¡c 2 giá»','Pin:',26),
+(209,'','Micro USB','Cá»•ng sáº¡c:',26),
+(210,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',26),
+(211,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',26),
+(212,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',26),
+(213,'','JBL','HÃ£ng',26),
+(214,'Tai nghe vá»›i thiáº¿t káº¿ dáº¡ng in-ear vá»›i kiá»ƒu dÃ¡ng tráº» trung, nÄƒng Ä‘á»™ng, trá»ng lÆ°á»£ng chá»‰ 16.5g.\nKÃ­ch thÆ°á»›c mÃ ng loa 9mm mang Ä‘áº¿n Ã¢m thanh máº¡nh máº½ vÃ  cÃ¢n báº±ng.\nÄá»‡m tai nghe má»m máº¡i táº¡o cáº£m giÃ¡c thoáº£i mÃ¡i khi Ä‘eo.\nKáº¿t ná»‘i khÃ´ng dÃ¢y vá»›i Bluetooth 4.0 nhanh, á»•n Ä‘á»‹nh.\nTÆ°Æ¡ng thÃ­ch vá»›i nhiá»u dÃ²ng Ä‘iá»‡n thoáº¡i, mÃ¡y tÃ­nh báº£ng.\nThá»i gian sá»­ dá»¥ng 6 giá», thá»i gian sáº¡c 2 giá».','','',26),
+(215,'','DÃ¹ng 8 giá» - Sáº¡c 2 giá»','Pin:',27),
+(216,'','Micro USB','Cá»•ng sáº¡c:',27),
+(217,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',27),
+(218,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',27),
+(219,'','JBL','HÃ£ng',27),
+(220,'Tai nghe thá»ƒ thao thiáº¿t káº¿ gá»n nháº¹ vá»›i kiá»ƒu dÃ¡ng tráº» trung, nÄƒng Ä‘á»™ng.\nThá»i gian sá»­ dá»¥ng 8 giá» Ä‘á»“ng há»“, thá»i gian sáº¡c 2 giá».\nCÃ´ng nghá»‡ Bluetooth 4.2 cho káº¿t ná»‘i tá»›i 10 m mÆ°á»£t mÃ , á»•n Ä‘á»‹nh.\nHá»— trá»£ báº±ng giá»ng nÃ³i Google Assistant chá»‰ vá»›i 1 nÃºt báº¥m.\nTÃ­ch há»£p Microphone vá»›i cÃ´ng nghá»‡ khá»­ tiáº¿ng vang cho Ã¢m thanh cuá»™c gá»i trong tráº»o, rÃµ rÃ ng.\nCung cáº¥p cÃ¡c nÃºt tai nghe vá»›i cÃ¡c kÃ­ch cá»¡ khÃ¡c nhau phÃ¹ há»£p vá»›i ngÆ°á»i dÃ¹ng.','','',27),
+(221,'','DÃ¹ng 3 giá» - Sáº¡c 2 giá»','Thá»i gian nghe:',28),
+(222,'','DÃ¹ng 16 giá» - Sáº¡c 2 giá»','Thá»i gian há»™p sáº¡c:',28),
+(223,'','Micro USB','Cá»•ng sáº¡c:',28),
+(224,'','JBL Pure Bass','CÃ´ng nghá»‡ Ã¢m thanh:',28),
+(225,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',28),
+(226,'','CÃ³ mic thoáº¡i','Tiá»‡n tÃ­ch:',28),
+(227,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',28),
+(228,'','JBL','HÃ£ng',28),
+(229,'Thiáº¿t káº¿ earbuds sÃ nh Ä‘iá»‡u, tráº» trung vÃ  báº¯t máº¯t.\nTrang bá»‹ Bluetooth 5.0 cho káº¿t ná»‘i nhanh vÃ  á»•n Ä‘á»‹nh.\nCháº¥t lÆ°á»£ng Ã¢m thanh vÆ°á»£t trá»™i vá»›i driver 12.5 mm vÃ  cÃ´ng nghá»‡ JBL Pure Bass Sound.\nThá»i gian sá»­ dá»¥ng 3 giá», há»™p sáº¡c cung cáº¥p thÃªm 16 giá» cho tai nghe.','','',28),
+(230,'','DÃ¹ng 10 giá» - Sáº¡c 2 giá»','Thá»i gian nghe:',29),
+(231,'','DÃ¹ng 20 giá» - Sáº¡c 2 giá»','Thá»i gian há»™p sáº¡c:',29),
+(232,'','Micro USB','Cá»•ng sáº¡c:',29),
+(233,'','Ambient Aware, JBL Signature Sound, TalkThru','CÃ´ng nghá»‡ Ã¢m thanh:',29),
+(234,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',29),
+(235,'','Chá»‘ng nÆ°á»›c, CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n tÃ­ch:',29),
+(236,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',29),
+(237,'','JBL','HÃ£ng',29),
+(238,'Thiáº¿t káº¿ nhá» gá»n, hiá»‡n Ä‘áº¡i vÃ  cÃ¡ tÃ­nh.\nCÃ´ng nghá»‡ bluetooth 5.0 cho káº¿t ná»‘i nhanh vÃ  á»•n Ä‘á»‹nh.\nCÃ´ng nghá»‡ Ã¢m thanh JBL Signature Sound.\nTrang bá»‹ cÃ¡c cÃ´ng nghá»‡ TalkThru vÃ  Ambient Aware.\nCÃ³ kháº£ nÄƒng chá»‘ng nÆ°á»›c Ä‘áº¡t chuáº©n IPX7.\nThá»i gian sá»­ dá»¥ng 10 giá», thÃªm 20 giá» cÃ¹ng há»™p sáº¡c.\nThá»i gian sáº¡c 2 giá», sáº¡c nhanh 10 phÃºt sá»­ dá»¥ng Ä‘áº¿n 60 phÃºt.','','',29),
+(239,'','3.5 mm','Jack cáº¯m:',30),
+(240,'','Ambient Aware, JBL Signature Sound, TalkThru','CÃ´ng nghá»‡ Ã¢m thanh:',30),
+(241,'','MacOS (Macbook, iMac), Windows','TÆ°Æ¡ng thÃ­ch:',30),
+(242,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',30),
+(243,'','JBL','HÃ£ng',30),
+(244,'Tai nghe chá»¥p tai thá»i thÆ°á»£ng, Ä‘á»‡m xá»‘p siÃªu nháº¹, phÃ¹ há»£p tÃ­n Ä‘á»“ chÆ¡i game.\nTÃ¡i táº¡o Ã¢m thanh chÃ¢n tháº­t, sáº¯c nÃ©t nhá» mÃ ng loa 40 mm, cÃ´ng nghá»‡ JBL QuantumSOUND Signature.\nCÃ³ microphone cho Ä‘Ã m thoáº¡i to, rÃµ, kÃªu gá»i Ä‘á»“ng Ä‘á»™i dá»… dÃ ng hÆ¡n. \nSá»­ dá»¥ng jack káº¿t ná»‘i 3.5 mm káº¿t ná»‘i Ä‘a thiáº¿t bá»‹. \nTÃ­ch há»£p nÃºt cÆ¡ báº­t/táº¯t, tÄƒng giáº£m Ã¢m lÆ°á»£ng linh hoáº¡t. ','','',30),
+(245,'','DÃ¹ng 16 giá» - Sáº¡c 2 giá»','Pin:',31),
+(246,'','Micro USB','Cá»•ng sáº¡c:',31),
+(247,'','Android,iOS (iPhone)','TÆ°Æ¡ng thÃ­ch:',31),
+(248,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',31),
+(249,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',31),
+(250,'','JBL','HÃ£ng',31),
+(251,'Thiáº¿t káº¿ thá»ƒ thao sÃ nh Ä‘iá»‡u, cÃ³ thá»ƒ gáº¥p gá»n.\nCÃ³ thá»ƒ kÃ©o dÃ£n pháº§n chá»¥p tai phÃ¹ há»£p nhiá»u ngÆ°á»i dÃ¹ng khÃ¡c nhau.\nCÃ´ng nghá»‡ Bluetooth 4.1, káº¿t ná»‘i trong khoáº£ng cÃ¡ch Ä‘áº¿n 10 m.\nBáº­t trá»£ lÃ½ áº£o nhanh chÃ³ng ra lá»‡nh ngay trÃªn tai nghe.\nPin 16 giá», hoáº¡t Ä‘á»™ng cáº£ ngÃ y dÃ i.\nTrang bá»‹ cÃ¡c nÃºt nháº¥n Ä‘iá»u khiá»ƒn nhÆ°: PhÃ¡t/dá»«ng chÆ¡i nháº¡c, nháº­n cuá»™c gá»i, tÄƒng, giáº£m Ã¢m lÆ°á»£ng.','','',31),
+(252,'','DÃ¹ng 4 giá» - Sáº¡c 1.5 giá»','Thá»i gian nghe:',32),
+(253,'','DÃ¹ng 12 giá» - Sáº¡c 2 giá»','Thá»i gian há»™p sáº¡c:',32),
+(254,'','Micro USB','Cá»•ng sáº¡c:',32),
+(255,'','Lá»c Ã¢m, khá»­ á»“n DSP','CÃ´ng nghá»‡ Ã¢m thanh:',32),
+(256,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',32),
+(257,'','Chá»‘ng nÆ°á»›c','Tiá»‡n tÃ­ch:',32),
+(258,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',32),
+(259,'','Xiaomi','HÃ£ng',32),
+(260,'Thiáº¿t káº¿ nhá» gá»n, phÃ¹ há»£p vá»›i nhiá»u kÃ­ch cá»¡ tai.\nMÃ ng loa cÃ³ kÃ­ch thÆ°á»›c 7.2 mm cho Ã¢m bass cÃ¡c thÃªm dÃ y vÃ  sÃ¢u.\nBáº¯t trá»n Ã¢m thanh vá»›i cÃ´ng nghá»‡ khá»­ tiáº¿ng á»“n DSP.\nYÃªn tÃ¢m sá»­ dá»¥ng vá»›i kháº£ nÄƒng chá»‘ng nÆ°á»›c IPX4.\nNghe nháº¡c tháº£ ga, sáº¡c Ä‘áº§y pin nhanh chÃ³ng.\nKáº¿t ná»‘i khÃ´ng dÃ¢y nhanh chÃ³ng, tÆ°Æ¡ng thÃ­ch vá»›i nhiá»u thiáº¿t bá»‹ nhá» cÃ´ng nghá»‡ Bluetooth 5.0.\nTá»± Ä‘á»™ng káº¿t ná»‘i, Ä‘iá»u khiá»ƒn tai nghe tiá»‡n lá»£i.','','',32),
+(261,'','DÃ¹ng 5 giá» - Sáº¡c 1.5 giá»','Thá»i gian nghe:',33),
+(262,'','DÃ¹ng 20 giá» - Sáº¡c 1.5 giá»','Thá»i gian há»™p sáº¡c:',33),
+(263,'','Type-C','Cá»•ng sáº¡c:',33),
+(264,'','codecAAC','CÃ´ng nghá»‡ Ã¢m thanh:',33),
+(265,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',33),
+(266,'','Chá»‘ng nÆ°á»›c','Tiá»‡n tÃ­ch:',33),
+(267,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',33),
+(268,'','Xiaomi','HÃ£ng',33),
+(269,'Thiáº¿t káº¿ nhá» gá»n, tiá»‡n lá»£i mang theo.\nChuáº©n Bluetooth 5.0 káº¿t ná»‘i mÆ°á»£t mÃ  Ä‘áº¿n 10m.\nKháº£ nÄƒng chá»‘ng nÆ°á»›c chuáº©n IPX5.\nÄiá»u khiá»ƒn báº±ng cáº£m á»©ng trÃªn tai nghe.\nTrang bá»‹ cÃ´ng nghá»‡ khá»­ tiáº¿ng á»“n mÃ´i trÆ°á»ng.\nÃ‚m thanh tuyá»‡t vá»i vá»›i codec AAC vÃ  mÃ ng loa 14,2 mm.\nThá»i gian sá»­ dá»¥ng 5 giá», kÃ¨m há»™p sáº¡c 20 giá» vÃ  sáº¡c 1.5 giá».','','',33),
+(270,'','DÃ¹ng 4 giá» - Sáº¡c 1 giá»','Thá»i gian nghe:',34),
+(271,'','DÃ¹ng 18 giá» - Sáº¡c 1.5 giá»','Thá»i gian há»™p sáº¡c:',34),
+(272,'','Type-C','Cá»•ng sáº¡c:',34),
+(273,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',34),
+(274,'','Chá»‘ng nÆ°á»›c','Tiá»‡n tÃ­ch:',34),
+(275,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',34),
+(276,'','Xiaomi','HÃ£ng',34),
+(277,'Kiá»ƒu dÃ¡ng nhá» gá»n cÃ¹ng thiáº¿t káº¿ hiá»‡n Ä‘áº¡i, tráº» trung.\nKáº¿t ná»‘i nhanh chÃ³ng vÃ  á»•n Ä‘á»‹nh trong pháº¡m vi 10 m nhá» Bluetooth 5.0.\nDá»… dÃ ng Ä‘iá»u khiá»ƒn chá»‰ báº±ng cáº£m á»©ng thao tÃ¡c cháº¡m.\nTrÃ² chuyá»‡n Ä‘iá»‡n thoáº¡i thoáº£i mÃ¡i vÃ  rÃµ rÃ ng hÆ¡n nhá» cÃ´ng nghá»‡ khá»­ tiáº¿ng á»“n.\nBáº£o vá»‡ tai nghe khá»i tÃ¡c háº¡i cá»§a nÆ°á»›c vá»›i chuáº©n chá»‘ng nÆ°á»›c IPX5.\nCháº¥t Ã¢m sá»‘ng Ä‘á»™ng, táº­n hÆ°á»Ÿng trá»n váº¹n cÃ¡c giai Ä‘iá»‡u.\nThá»i gian sá»­ dá»¥ng 4 giá», kÃ¨m há»™p sáº¡c 18 giá» vÃ  sáº¡c 1 giá».','','',34),
+(278,'','DÃ¹ng 6 giá» - Sáº¡c 1 giá»','Thá»i gian nghe:',35),
+(279,'','DÃ¹ng 12 giá» - Sáº¡c 1.5 giá»','Thá»i gian há»™p sáº¡c:',35),
+(280,'','Type-C','Cá»•ng sáº¡c:',35),
+(281,'','Headphone Spatial Processing, Meridian, Truyá»n phÃ¡t nháº¡c MQA','CÃ´ng nghá»‡ Ã¢m thanh:',35),
+(282,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',35),
+(283,'','TONE Free','á»¨ng dá»¥ng káº¿t ná»‘i:',35),
+(284,'','Chá»‘ng nÆ°á»›c, Äá»‡m tai Ä‘i kÃ¨m','Tiá»‡n tÃ­ch:',35),
+(285,'','Bluetooth 5.0','Há»— trá»£ káº¿t ná»‘i:',35),
+(286,'','Cáº£m á»©ng cháº¡m','Äiá»u khiá»ƒn báº±ng:',35),
+(287,'','LG','HÃ£ng',35),
+(288,'Há»™p sáº¡c UVnano má»›i khÃ¡ng khuáº©n Ä‘áº¿n 99.9%, há»— trá»£ sáº¡c khÃ´ng dÃ¢y.\nÃ‚m thanh Ä‘á»™ phÃ¢n giáº£i cao, chÃ¢n thá»±c vá»›i cÃ´ng nghá»‡ cá»§a Meridian tá»« Anh Quá»‘c.\nThiáº¿t káº¿ vá»«a váº·n, Ä‘á»‡m silicone chá»‘ng á»“n, tÃ­ch há»£p micro kÃ©p Ä‘á»ƒ cuá»™c gá»i rÃµ rÃ ng hÆ¡n.\nChuáº©n Bluetooth 5.0 vá»›i khoáº£ng cÃ¡ch káº¿t ná»‘i Ä‘áº¿n 10 m.\nKháº£ nÄƒng chá»‘ng nÆ°á»›c chuáº©n IPX4 báº£o vá»‡ tai nghe.\nSáº¡c qua cá»•ng Type-C hoáº·c cÃ³ thá»ƒ sáº¡c khÃ´ng dÃ¢y.\nThá»i lÆ°á»£ng pin lÃªn Ä‘áº¿n 18 giá» khi káº¿t há»£p vá»›i há»™p sáº¡c, sáº¡c nhanh 5 phÃºt dÃ¹ng thÃªm Ä‘áº¿n 1 giá».\nDá»… dÃ ng tÃ¹y chá»‰nh vÃ  tÃ¬m kiáº¿m tai nghe vá»›i á»©ng dá»¥ng TONE Free.','','',35),
+(289,'','DÃ¹ng 12 giá» - Sáº¡c 2 giá»','Pin:',36),
+(290,'','Micro USB','Cá»•ng sáº¡c:',36),
+(291,'','Quad Layer','CÃ´ng nghá»‡ Ã¢m thanh:',36),
+(292,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',36),
+(293,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',36),
+(294,'','LG','HÃ£ng',36),
+(295,'Thiáº¿t káº¿ gá»n nháº¹, liá»n máº¡ch tinh xáº£o vÃ  thanh lá»‹ch, nÃºt tai cÃ³ thá»ƒ thu vÃ o.\nÃ‚m thanh Ä‘Æ°á»£c Ä‘iá»u chá»‰nh bá»Ÿi Harman Kardon, cho ra cháº¥t Ã¢m tá»‘t nháº¥t.\nCÃ´ng nghá»‡ Bluetooth 4.2 cho káº¿t ná»‘i á»•n Ä‘á»‹nh, mÆ°á»£t mÃ  Ä‘áº¿n 10 m.\nTÃ­ch há»£p micro, cÃ³ nÃºt Google Assistant chuyÃªn dá»¥ng.\nDung lÆ°á»£ng pin 220 mAh, thá»i gian sáº¡c 2 giá», thá»i gian nghe nháº¡c 12 giá», thá»i gian Ä‘Ã m thoáº¡i 13 giá».','','',36),
+(296,'','DÃ¹ng 13 giá» - Sáº¡c 2 giá»','Pin:',37),
+(297,'','Micro USB','Cá»•ng sáº¡c:',37),
+(298,'','Quad Layer','CÃ´ng nghá»‡ Ã¢m thanh:',37),
+(299,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',37),
+(300,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',37),
+(301,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',37),
+(302,'','LG','HÃ£ng',37),
+(303,'Thiáº¿t káº¿ dáº¡ng vÃ²ng cá»• gá»n nháº¹, Ä‘á»‡m tai má»m Ãªm Ã¡i.\nCÃ´ng nghá»‡ Quad Layer tiÃªn tiáº¿n táº¡o nÃªn sá»± hÃ i hÃ²a, cÃ¢n báº±ng cho Ã¢m thanh.\nThÃ´ng bÃ¡o rung khi cÃ³ cuá»™c gá»i Ä‘áº¿n, tÃ­ch há»£p micro.\nCÃ´ng nghá»‡ bluetooth 4.1 cho káº¿t ná»‘i á»•n Ä‘á»‹nh, mÆ°á»£t mÃ  Ä‘áº¿n 10m.\nDung lÆ°á»£ng pin 210 mAh, thá»i gian sáº¡c 2 giá», thá»i gian nghe nháº¡c 13 giá», thá»i gian Ä‘Ã m thoáº¡i 14 giá».','','',37),
+(304,'','DÃ¹ng 10 giá» - Sáº¡c 2 giá»','Pin:',38),
+(305,'','Micro USB','Cá»•ng sáº¡c:',38),
+(306,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',38),
+(307,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',38),
+(308,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',38),
+(309,'','Kanen','HÃ£ng',38),
+(310,'CÃ´ng nghá»‡ bluetooth 4.1 cho khoáº£ng cÃ¡ch káº¿t ná»‘i lÃªn Ä‘áº¿n 10m.\nCÃ³ thá»ƒ gá»i nhanh, nghe nháº¡c, táº¡o cuá»™c háº¹n, v.v.. thÃ´ng qua Siri hay Google Voice.\nÄá»‡m tai nghe dÃ y, thoáº£i mÃ¡i khi sá»­ dá»¥ng khoáº£ng thá»i gian dÃ i.\nDung lÆ°á»£ng pin: 300 mAh, cho thá»i gian sá»­ dá»¥ng cÃ³ thá»ƒ lÃªn Ä‘áº¿n 10 giá», thá»i gian sáº¡c khoáº£ng 2 giá».','','',38),
+(311,'','DÃ¹ng 18 giá» - Sáº¡c 2 giá»','Pin:',39),
+(312,'','Micro USB','Cá»•ng sáº¡c:',39),
+(313,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',39),
+(314,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',39),
+(315,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',39),
+(316,'','Kanen','HÃ£ng',39),
+(317,'Thiáº¿t káº¿ hiá»‡n Ä‘áº¡i, nÄƒng Ä‘á»™ng, cÃ³ thá»ƒ gáº¥p gá»n khi khÃ´ng sá»­ dá»¥ng.\nKhoáº£ng cÃ¡ch káº¿t ná»‘i xa Ä‘áº¿n 10 m qua cÃ´ng nghá»‡ Bluetooth 4.1. \nSá»­ dá»¥ng liÃªn tá»¥c trong 18 giá», sáº¡c Ä‘áº§y trong 2 giá».\nDá»… dÃ ng Ä‘iá»u khiá»ƒn qua giá»ng nÃ³i vá»›i Siri, Google Voice.','','',39),
+(318,'','3.5 mm','Jack cáº¯m:',40),
+(319,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',40),
+(320,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',40),
+(321,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',40),
+(322,'','Chuyá»ƒn bÃ i hÃ¡t, Mic thoáº¡iNghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',40),
+(323,'','Kanen','HÃ£ng',40),
+(324,'Lá»›p Ä‘á»‡m tai Ãªm vÃ  dÃ y, giÃºp Ä‘eo tai thoáº£i mÃ¡i vÃ  háº¡n cháº¿ bá»‹ rÃ¡ch.\nCÃ³ thá»ƒ kÃ©o dÃ£n tai nghe 4 cm Ä‘á»ƒ vá»«a váº·n hÆ¡n khi sá»­ dá»¥ng.\nTÆ°Æ¡ng thÃ­ch vá»›i háº§u háº¿t Ä‘iá»‡n thoáº¡i hiá»‡n nay.\nDÃ¢y dÃ i lÃªn Ä‘áº¿n 150 cm thoáº£i mÃ¡i Ä‘á»ƒ vá»«a dÃ¹ng mÃ¡y vá»«a nghe nháº¡c.','','',40),
+(325,'','3.5 mm','Jack cáº¯m:',41),
+(326,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',41),
+(327,'','CÃ³ mic thoáº¡i','Tiá»‡n Ã­ch:',41),
+(328,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',41),
+(329,'','Chuyá»ƒn bÃ i hÃ¡t, Mic thoáº¡iNghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',41),
+(330,'','Kanen','HÃ£ng',41),
+(331,'CÃ³ thá»ƒ gáº¥p gá»n khi muá»‘n cho vÃ o trong balo.\nLá»›p Ä‘á»‡m tai Ãªm vÃ  dÃ y, giÃºp Ä‘eo tai thoáº£i mÃ¡i vÃ  háº¡n cháº¿ bá»‹ rÃ¡ch.\nCÃ³ thá»ƒ kÃ©o dÃ£n tai nghe 3 cm Ä‘á»ƒ vá»«a váº·n hÆ¡n khi sá»­ dá»¥ng.\nTÆ°Æ¡ng thÃ­ch vá»›i háº§u háº¿t Ä‘iá»‡n thoáº¡i hiá»‡n nay.\nCÃ³ nÃºt nháº­n cuá»™c gá»i, phÃ¡t/dá»«ng chÆ¡i nháº¡c, tÄƒng giáº£m Ã¢m lÆ°á»£ng.\nDÃ¢y dÃ i lÃªn Ä‘áº¿n 1.5 m thoáº£i mÃ¡i Ä‘á»ƒ vá»«a dÃ¹ng mÃ¡y vá»«a nghe nháº¡c.','','',41),
+(332,'','3.5 mm','Jack cáº¯m:',42),
+(333,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',42),
+(334,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',42),
+(335,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',42),
+(336,'','Chuyá»ƒn bÃ i hÃ¡t, Mic thoáº¡iNghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',42),
+(337,'','Kanen','HÃ£ng',42),
+(338,'Thiáº¿t káº¿ sang trá»ng, mÃ u sáº¯c thá»i trang, dÃ¢y 1.2 m dáº¹t chá»‘ng rá»‘i. \nÄá»‡m tai Ãªm Ã¡i, cÃ³ 3 cáº·p dá»… lá»±a chá»n Ä‘eo vá»«a váº·n.\nCÃ³ mic thoáº¡i, nÃºt báº¥m Ä‘á»ƒ nghe/nháº­n cuá»™c gá»i, phÃ¡t/dá»«ng chÆ¡i nháº¡c, tÄƒng/giáº£m Ã¢m lÆ°á»£ng.\nTrang bá»‹ jack cáº¯m 3.5 mm phá»‘i ghÃ©p Ä‘Æ°á»£c vá»›i nhiá»u Ä‘iá»‡n thoáº¡i, mÃ¡y tÃ­nh báº£ng.','','',42),
+(339,'','3.5 mm','Jack cáº¯m:',43),
+(340,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',43),
+(341,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',43),
+(342,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',43),
+(343,'','Chuyá»ƒn bÃ i hÃ¡t, Mic thoáº¡iNghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',43),
+(344,'','Kanen','HÃ£ng',43),
+(345,'Thiáº¿t káº¿ báº¯t máº¯t, dÃ¢y dáº¹t chá»‘ng xoáº¯n rá»‘i, dÃ i 1.2 m.\nKáº¿t ná»‘i Ä‘Æ°á»£c vá»›i nhiá»u thiáº¿t bá»‹ cÃ³ tÃ­ch há»£p cá»•ng 3.5mm.\nMic thoáº¡i cho Ã¢m thanh trong tráº»o, rÃµ nÃ©t.\nCÃ³ nÃºt nháº¥n - nÃºt gáº¡t Ä‘iá»u chá»‰nh tÄƒng/giáº£m Ã¢m lÆ°á»£ng, ngá»«ng/chÆ¡i nháº¡c, chuyá»ƒn bÃ i, nháº­n cuá»™c gá»i tiá»‡n lá»£i.\nThiáº¿t káº¿ mÃ³c tai Ä‘áº£m báº£o Ä‘eo tai nghe cháº¯c cháº¯n hÆ¡n.','','',43),
+(346,'','3.5 mm','Jack cáº¯m:',44),
+(347,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',44),
+(348,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',44),
+(349,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',44),
+(350,'','Nghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',44),
+(351,'','Awei','HÃ£ng',44),
+(352,'Thiáº¿t káº¿ gá»n nháº¹, dÃ¢y dÃ i 124 cm.\nDáº¡ng tai nghe nÃºt cho kháº£ nÄƒng cÃ¡ch Ã¢m tá»‘t.\nJack cáº¯m 3.5 mm tÆ°Æ¡ng thÃ­ch vá»›i nhiá»u thiáº¿t bá»‹.\nTÃ­ch há»£p mic thoáº¡i, nÃºt cÃ´ng táº¯c Ä‘á»ƒ nháº­n cuá»™c gá»i, dá»«ng/phÃ¡t chÆ¡i nháº¡c, tÄƒng/giáº£m Ã¢m lÆ°á»£ng.','','',44),
+(353,'','3.5 mm','Jack cáº¯m:',45),
+(354,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',45),
+(355,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',45),
+(356,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',45),
+(357,'','Nghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',45),
+(358,'','Awei','HÃ£ng',45),
+(359,'Thiáº¿t káº¿ nhá» gá»n, dá»… mang theo, cÃ³ dÃ¢y dÃ i 134 cm.\nÄá»‡m tai cao su cÃ¡ch Ã¢m tá»‘t, cho Ã¢m thanh rÃµ rÃ ng. \nJack 3.5mm dáº¡ng chá»¯ L chá»‹u lá»±c, káº¿t ná»‘i Ä‘Æ°á»£c nhiá»u thiáº¿t bá»‹.\nTrang bá»‹ mic thoáº¡i, dá»… dÃ ng nháº­n cuá»™c gá»i, tÄƒng/giáº£m Ã¢m lÆ°á»£ng, dá»«ng/phÃ¡t nháº¡c qua nÃºt báº¥m.','','',45),
+(360,'','3.5 mm','Jack cáº¯m:',46),
+(361,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',46),
+(362,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',46),
+(363,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',46),
+(364,'','Nghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',46),
+(365,'','Awei','HÃ£ng',46),
+(366,'Thiáº¿t káº¿ thá»i trang, nhá» gá»n, dá»… dÃ ng mang theo.\nCÃ³ jack cáº¯m 3.5mm, tÆ°Æ¡ng thÃ­ch vá»›i nhiá»u thiáº¿t bá»‹.\nCÃ³ Ä‘á»‡m tai cao su cho cáº£m giÃ¡c dá»… chá»‹u, háº¡n cháº¿ tiáº¿ng á»“n vÃ  cÃ³ Ã¢m thanh ra tá»‘t.\nNÃºt Ä‘iá»u khiá»ƒn trÃªn tai nghe tiá»‡n lá»£i.','','',46),
+(367,'','3.5 mm','Jack cáº¯m:',47),
+(368,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',47),
+(369,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',47),
+(370,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',47),
+(371,'','Nghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',47),
+(372,'','Awei','HÃ£ng',47),
+(373,'Thiáº¿t káº¿ Ä‘áº¹p máº¯t, trá»ng lÆ°á»£ng nháº¹, dÃ¢y dÃ i 1.34 m.\nÄá»‡m tai báº±ng cao su chá»‘ng á»“n, Ä‘eo thoáº£i mÃ¡i.\nKáº¿t há»£p Ä‘Æ°á»£c vá»›i cÃ¡c mÃ¡y cá»•ng 3.5 mm.\nCÃ³ nÃºt nháº¥n tiá»‡n nháº­n cuá»™c gá»i, tÄƒng giáº£m Ã¢m lÆ°á»£ng, dá»«ng/phÃ¡t nháº¡c.','','',47),
+(374,'','3.5 mm','Jack cáº¯m:',48),
+(375,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',48),
+(376,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',48),
+(377,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',48),
+(378,'','Nghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',48),
+(379,'','Awei','HÃ£ng',48),
+(380,'Kiá»ƒu dÃ¡ng Ä‘Æ¡n giáº£n, mÃ u Ä‘en vÃ  báº¡c sÃ nh Ä‘iá»‡u.\nHá»— trá»£ mic thoáº¡i, Ã¢m thanh sá»‘ng Ä‘á»™ng, khÃ´ng bá»‹ vá»¡ tiáº¿ng.\nJack 3.5 mm thÃ´ng dá»¥ng, chiá»u dÃ i dÃ¢y Ä‘áº¿n 1.2 m.\nCÃ³ nÃºt chá»‰nh nháº­n cuá»™c gá»i, tÄƒng/giáº£m Ã¢m lÆ°á»£ng, chuyá»ƒn bÃ i, ngá»«ng/chÆ¡i nháº¡c,....','','',48),
+(381,'','3.5 mm','Jack cáº¯m:',49),
+(382,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',49),
+(383,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',49),
+(384,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',49),
+(385,'','Nghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',49),
+(386,'','Awei','HÃ£ng',49),
+(387,'TÆ°Æ¡ng thÃ­ch tá»‘t vá»›i nhiá»u dÃ²ng Ä‘iá»‡n thoáº¡i.\nTai nghe dáº¡ng nÃºt giÃºp cÃ¡ch Ã¢m tá»‘t vá»›i bÃªn ngoÃ i.\nCÃ³ nÃºt áº¥n nháº­n cuá»™c gá»i, ngá»«ng/chÆ¡i nháº¡c, chuyá»ƒn bÃ i hÃ¡t.\nDÃ¢y dÃ i 120 cm thoáº£i mÃ¡i Ä‘á»ƒ vá»«a dÃ¹ng mÃ¡y vá»«a nghe nháº¡c.','','',49),
+(388,'','3.5 mm','Jack cáº¯m:',50),
+(389,'','Android, iOS (iPhone), Windows','TÆ°Æ¡ng thÃ­ch:',50),
+(390,'','CÃ³ mic thoáº¡i, Äá»‡m tai Ä‘i kÃ¨m, Tai nghe nhÃ©t tai','Tiá»‡n Ã­ch:',50),
+(391,'','PhÃ­m nháº¥n','Äiá»u khiá»ƒn báº±ng:',50),
+(392,'','Nghe/nháº­n cuá»™c gá»i, PhÃ¡t/dá»«ng chÆ¡i nháº¡c, TÄƒng/giáº£m Ã¢m lÆ°á»£ng','PhÃ­m Ä‘iá»u khiá»ƒn:',50),
+(393,'','Awei','HÃ£ng',50),
+(394,'CÃ³ nÃºt chá»‰nh tÆ°Æ¡ng thÃ­ch vá»›i cÃ¡c dÃ²ng Ä‘iá»‡n thoáº¡i khÃ¡c nhau.\nTai nghe dáº¡ng nÃºt giÃºp cÃ¡ch Ã¢m tá»‘t vá»›i bÃªn ngoÃ i.\nCÃ³ nÃºt áº¥n nháº­n cuá»™c gá»i, ngá»«ng/chÆ¡i nháº¡c.\nDÃ¢y dÃ i 120 cm thoáº£i mÃ¡i Ä‘á»ƒ vá»«a dÃ¹ng mÃ¡y vá»«a nghe nháº¡c.','','',50);
 /*!40000 ALTER TABLE `product_desc` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `product_images`
---
 
-DROP TABLE IF EXISTS `product_images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `product_images` (
-  `pi_id` int NOT NULL AUTO_INCREMENT,
-  `product_id` int DEFAULT NULL,
-  `pi_url` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`pi_id`),
-  KEY `FKqnq71xsohugpqwf3c9gxmsuy` (`product_id`),
-  CONSTRAINT `FKqnq71xsohugpqwf3c9gxmsuy` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `product_images`
---
+
+
+
+
+
+
+
+
+
+
 
 LOCK TABLES `product_images` WRITE;
 /*!40000 ALTER TABLE `product_images` DISABLE KEYS */;
@@ -267,76 +526,25 @@ INSERT INTO `product_images` VALUES (1,1,'./assets/imgs/Apple/1/0.jpg'),(2,1,'./
 /*!40000 ALTER TABLE `product_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `products`
---
 
-DROP TABLE IF EXISTS `products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `products` (
-  `product_id` int NOT NULL AUTO_INCREMENT,
-  `price` double DEFAULT NULL,
-  `discout` double DEFAULT NULL,
-  `title` varchar(500) DEFAULT NULL,
-  `sold` int DEFAULT NULL,
-  `quantity` int DEFAULT NULL,
-  `insurance` varchar(20) DEFAULT NULL,
-  `color` varchar(50) DEFAULT NULL,
-  `c_id` int DEFAULT NULL,
-  `m_id` int DEFAULT NULL,
-  PRIMARY KEY (`product_id`),
-  KEY `FK85jw6odle31rh94953xj7pvxy` (`c_id`),
-  KEY `FKr0fv63sc6rgwpucanfuoi299j` (`m_id`),
-  CONSTRAINT `FK85jw6odle31rh94953xj7pvxy` FOREIGN KEY (`c_id`) REFERENCES `category` (`category_id`),
-  CONSTRAINT `FKr0fv63sc6rgwpucanfuoi299j` FOREIGN KEY (`m_id`) REFERENCES `manufacturers` (`manufacturer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `products`
---
-
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,5635000,0.5,'Tai nghe Bluetooth AirPods Pro Wireless Charge Apple MWP22',117,991,'12 tháng','Trắng',8,1),(2,13990000,0.5,'Tai nghe chụp tai Bluetooth AirPods Max Apple MGYH3/ MGYJ3/ MGYL3 ',108,1000,'12 tháng','Đen',3,1),(3,711000,0.5,'Tai nghe nhét tai Earpods Apple MNHF2',108,1000,'12 tháng','Trắng',8,1),(4,4390000,0.5,'Tai nghe Bluetooth AirPods 2 Apple MV7N2',108,1000,'12 tháng','Trắng',6,1),(5,4990000,0.5,'Tai nghe Bluetooth True Wireless Galaxy Buds Pro',108,1000,'12 tháng','Bạc',1,2),(6,224000,0.5,'Tai nghe nhét tai Samsung EG920',108,1000,'12 tháng','Xanh',8,2),(7,2140000,0.5,'Tai nghe Bluetooth True Wireless Samsung Galaxy Buds+ R175',108,1000,'12 tháng','Đen',6,2),(8,2990000,0.5,'Tai nghe Bluetooth True Wireless Samsung Galaxy Buds 2 R177N',108,1000,'12 tháng','Trắng',6,2),(9,2990000,0.5,'Tai nghe Bluetooth 1 Bên Samsung MG900E',108,1000,'12 tháng','Đen',2,2),(10,1450000,0.5,'Tai nghe Bluetooth Samsung Level U Pro BN920C',108,1000,'12 tháng','Vàng',1,2),(11,6490000,0.4,'Tai nghe Bluetooth True Wireless Sony WF-1000XM4 ',55,1000,'12 tháng','Đen',6,3),(12,2990000,0.4,'Tai nghe Bluetooth Sony Extra Bass True Wireless WF-XB700',55,1000,'12 tháng','Xanh',6,3),(13,4790000,0.4,'Tai nghe Bluetooth True Wireless Sony WF-SP800N',55,1000,'12 tháng','Xanh',6,3),(14,8490000,0.4,'Tai nghe chụp tai Bluetooth Sony WH-1000XM4',55,1000,'12 tháng','Đen',3,3),(15,5790000,0.4,'Tai nghe chụp tai Bluetooth Sony WH-XB900N',55,1000,'12 tháng','Đen',3,3),(16,1190000,0.4,'Tai nghe chụp tai Bluetooth Sony WH-CH510/BC',55,1000,'12 tháng','Đen',3,3),(17,540000,0.4,'Tai nghe chụp tai Sony MDR - ZX110AP',55,1000,'12 tháng','Đen',3,3),(18,1890000,0.4,'Tai nghe Bluetooth Sony Extra Bass WI-SP510/BZ E',55,1000,'12 tháng','Đen',1,3),(19,1690000,0.4,'Tai nghe Bluetooth Sony Extra Bass MDR-XB50BS',55,1000,'12 tháng','Đen',1,3),(20,3990000,0.4,'Tai nghe Bluetooth True Wireless Beats Studio Buds MJ4X3',55,1000,'12 tháng','Đen',6,4),(21,5990000,0.3,'Tai nghe Bluetooth True Wireless Beats Powerbeats Pro MV6Y2/ MV702',69,1000,'12 tháng','Xanh',6,4),(22,5490000,0.3,'Tai nghe chụp tai Beats Solo3 Wireless MX432/ MV8T2/ MX472',69,1000,'12 tháng','Đỏ',3,4),(23,7490000,0.3,'Tai nghe chụp tai Beats Studio3 Wireless MX422/ MX432',69,1000,'12 tháng','Đen, Đỏ',3,4),(24,1290000,0.3,'Tai nghe Bluetooth Beats Flex MYMC2/ MYMD2',69,1000,'12 tháng','Vàng',1,4),(25,2190000,0.3,'Tai nghe Bluetooth Beats Powerbeats 3 ML8V2/ MRQ92',69,1000,'12 tháng','Đỏ, Đen',1,4),(26,890000,0.3,'Tai nghe Bluetooth JBL T110BT ',69,1000,'12 tháng','Xanh',1,5),(27,2190000,0.3,'Tai nghe Bluetooth thể thao JBL V110 ',69,1000,'12 tháng','Trắng, Bạc',1,5),(28,2890000,0.3,'Tai nghe Bluetooth True Wireless JBL Tune 220 ',69,1000,'12 tháng','Xám',6,5),(29,2872000,0.3,'Tai nghe Bluetooth True Wireless JBL REFFLOW',69,1000,'12 tháng','Đen',6,5),(30,891000,0.3,'Tai nghe chụp tai Gaming JBL QUANTUM 100',69,1000,'12 tháng','Đen',3,5),(31,1690000,0.2,'Tai nghe chụp tai Bluetooth JBL T500',201,1000,'12 tháng','Xanh',3,5),(32,790000,0.2,'Tai nghe Bluetooth True Wireless Xiaomi Earbuds Basic 2 BHR4272GL',201,1000,'12 tháng','Đen',6,6),(33,1590000,0.2,'Tai nghe Bluetooth True Wireless Earphones 2 Basic Xiaomi BHR4089GL',201,1000,'12 tháng','Trắng',6,6),(34,2590000,0.2,'Tai nghe Bluetooth True Wireless Earphones 2 Xiaomi ZBW4493GL',201,1000,'12 tháng','Trắng',6,6),(35,3490000,0.2,'Tai nghe Bluetooth True Wireless LG Tone Free HBS-FN6',201,1000,'12 tháng','Đen',6,7),(36,3490000,0.2,'Tai nghe Bluetooth Thể Thao LG Tone Platinum SE HBS-1120',201,1000,'12 tháng','Đen',1,7),(37,899000,0.2,'Tai nghe Bluetooth Thể Thao LG Tone Triumph HBS-510',201,1000,'12 tháng','Đen',1,7),(38,450000,0.2,'Tai nghe Bluetooth Kanen K9',201,1000,'12 tháng','Xanh',1,8),(39,600000,0.2,'Tai nghe Bluetooth Kanen K6',201,1000,'12 tháng','Xám',1,8),(40,350000,0.2,'Tai nghe chụp tai Kanen IP-892 ',201,1000,'12 tháng','Đen',3,8),(41,350000,0.1,'Tai nghe chụp tai Kanen IP-2090',201,1000,'12 tháng','Trắng',3,8),(42,150000,0.1,'Tai nghe nhét tai Kanen IP-218',201,1000,'12 tháng','Xám',8,8),(43,200000,0.1,'Tai nghe nhét tai Kanen S40',201,1000,'12 tháng','Xanh',8,8),(44,200000,0.1,'Tai nghe EP Awei Q60Hi',201,1000,'12 tháng','Trắng',4,9),(45,150000,0.1,'Tai nghe EP Awei Q50Hi',201,1000,'12 tháng','Đen',4,9),(46,150000,0.1,'Tai nghe Có Dây Awei Q29Hi',201,1000,'12 tháng','Đen',4,9),(47,150000,0.1,'Tai nghe Có Dây Awei Q27Hi',201,1000,'12 tháng','Đen',4,9),(48,150000,0.1,'Tai nghe Có Dây Awei Q19Hi',201,1000,'12 tháng','Đen',4,9),(49,150000,0.1,'Tai nghe Có Dây Awei Q7Ni',201,1000,'12 tháng','Đen',4,9),(50,200000,0.1,'Tai nghe nhét tai Awei ES500Ni',201,1000,'12 tháng','Đen',4,9);
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+LOCK TABLES `lineitem` WRITE;
+/*!40000 ALTER TABLE `lineitem` DISABLE KEYS */;
+INSERT INTO `lineitem` VALUES (1,1,31,1),(43,1,8,3),(44,2,8,4),(45,1,8,1),(46,3,8,33),(47,1,33,1),(48,1,33,3),(49,1,34,1),(50,1,34,32),(51,10,35,9),(52,1,35,6),(53,1,36,22),(54,1,37,35),(57,3,38,3),(59,1,13,1),(60,1,13,7),(61,1,39,1),(62,1,40,1),(63,10,38,8),(64,1,38,9),(65,1,38,1),(66,1,38,2),(67,1,42,1),(68,1,41,1),(69,1,41,2),(70,1,43,1),(71,1,9,1),(72,1,9,2),(73,1,9,5),(74,1,44,1),(75,1,44,3),(76,1,10,1),(77,1,10,2),(78,1,11,2),(79,1,11,1),(80,9,47,1),(81,5,43,10),(82,1,46,50),(83,1,47,2),(84,1,49,2);
+/*!40000 ALTER TABLE `lineitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `userId` int NOT NULL AUTO_INCREMENT,
-  `address` varchar(100) DEFAULT NULL,
-  `gender` tinyint DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `phone` varchar(11) DEFAULT NULL,
-  PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (4,NULL,NULL,'',NULL),(5,NULL,NULL,'temp',NULL),(6,NULL,NULL,'chua co ten',NULL),(7,NULL,NULL,'chua co ten',NULL),(8,NULL,NULL,'chua co ten',NULL),(9,NULL,NULL,'chua co ten',NULL),(26,NULL,NULL,'chua co ten',NULL),(27,NULL,NULL,'chua co ten',NULL);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,'9.5 Ä‘iá»ƒm, mua Ä‘i cÃ¡c homie','2021-11-08 06:10:20.000000',8,1),(6,'Tai nghe Ã¢m cá»±c Ä‘áº§m quáº©y vinahouse lÃ  sá»‘ dÃ¡ch','2021-11-08 06:10:20.000000',9,1),(14,'Buá»“n láº¯m em Æ¡i','2021-11-08 06:10:20.000000',10,1),(18,'ÄÃ¡nh giÃ¡ cho cÃ³','2021-11-08 21:12:20.461000',10,1),(23,'Buá»“n láº¯m em Æ¡i','2021-11-08 22:10:49.221000',8,32),(24,'Mua Ä‘Ãª Ä‘áº¡i háº¡ giÃ¡ nÃ¨','2021-11-08 22:11:04.661000',8,9),(25,'hÃº hÃº hÃº hÃº','2021-11-08 22:12:16.539000',8,22),(26,'áº¾ quÃ¡ máº¥y anh Æ¡i mua á»§ng há»™ em','2021-11-08 22:13:07.839000',8,2),(27,'Mua Ä‘Ãª mua Ä‘Ãª mua vá» combat cÄƒng cá»±c nÃ¨','2021-11-08 22:13:45.930000',13,2),(28,'Solo yasuo Ä‘Ãª','2021-11-08 22:14:32.027000',11,2),(29,'Mua Ä‘i cÃ²n cháº§n chá» chi','2021-11-10 16:38:24.773000',13,7),(30,'Tai nghe Ã¢m cá»±c Ä‘áº§m quáº©y vinahouse lÃ  sá»‘ dÃ¡ch','2021-11-11 16:42:31.261000',10,50);
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+LOCK TABLES `history` WRITE;
+/*!40000 ALTER TABLE `history` DISABLE KEYS */;
+INSERT INTO `history` VALUES (1,'2021-11-07 21:19:05.786000',8,34),(2,'2021-11-07 21:44:02.448000',8,35),(3,'2021-11-07 21:48:15.677000',8,36),(4,'2021-11-07 21:51:44.394000',8,37),(5,'2021-11-07 22:48:17.543000',13,13),(6,'2021-11-07 22:50:35.353000',13,39),(7,'2021-11-07 22:56:24.379000',13,40),(8,'2021-11-08 16:30:13.027000',8,38),(9,'2021-11-08 16:31:32.057000',13,41),(10,'2021-11-08 16:41:36.871000',9,9),(11,'2021-11-08 16:47:27.377000',9,44),(12,'2021-11-08 20:48:40.675000',10,10),(13,'2021-11-08 22:14:11.147000',11,11),(14,'2021-11-11 16:41:53.672000',10,46),(15,'2021-11-11 16:56:38.627000',11,47);
+/*!40000 ALTER TABLE `history` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Dump completed on 2021-11-11 18:25:26
+
+

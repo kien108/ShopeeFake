@@ -50,7 +50,7 @@
                 <input type="submit" value="ĐĂNG KÝ" class="btn btn--primary form__btn-login">
 
                 <c:if test = "${state != null}">
-                    <h1 class="notification" style="display: block">
+                    <h1 class="notification" style="display: block; color:${state == 1 ? "#088000f2" : red}">
                             ${state == 1 ? "Đăng ký tài khoản thành công!!!" : "Tên tài khoản đã tồn tại!!!"}
                     </h1>
                 </c:if>
