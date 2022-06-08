@@ -1,5 +1,6 @@
 package controller;
 
+import Service.HttpService;
 import model.AccountUtil;
 import entity.AccountsEntity;
 import entity.CartEntity;
@@ -39,6 +40,12 @@ public class LoginServlet extends HttpServlet {
                 Cookie u = new Cookie("username", username);
                 Cookie p = new Cookie("password", password);
 
+                // Gán http only để tránh truy cập cookie trái phép từ browser.
+
+                u.setHttpOnly(true);
+                p.setHttpOnly(true);
+
+
                 u.setMaxAge(60*60*24*365);
 
                 if (remember != null) {
@@ -46,8 +53,10 @@ public class LoginServlet extends HttpServlet {
                 }
                 else p.setMaxAge(0);
 
-                response.addCookie(u); //Luu username va password len trinh` duyet (chrome)
-                response.addCookie(p);
+//                response.addCookie(u); //Luu username va password len trinh` duyet (chrome)
+//                response.addCookie(p);
+                HttpService.addCookie(response, u, "Strict");
+                HttpService.addCookie(response, p, "Strict");
 
                 CartEntity cart = account.getCart();
                 session.setAttribute("cart", cart);
