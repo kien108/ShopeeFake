@@ -64,7 +64,7 @@
                                 <ul class="header__notify-list">
                                     <li class="header__notify-item header__notify-item--viewed">
                                         <a href="" class="header__notify-link">
-                                            <img src="https://product.hstatic.net/1000406625/product/29e7_185c989a3b654eb5b39a559bb9048d11_d6e5c46fefaf4de182aeca5a2406ecb2_2a948f8a4b724185bc11e0c9008de5eb_master.jpg" alt="" class="header__notify-img">
+                                            <img src="./assets/imgs/Apple/1/0.jpg" alt="" class="header__notify-img">
                                             <div class="header__notify-info">
                                                 <span class="header__notify-name">Giày Adidas chính hãng</span>
                                                 <span class="header__notify-desc">Mô tả Giày Adidas chính hãng</span>
@@ -73,7 +73,7 @@
                                     </li>
                                     <li class="header__notify-item">
                                         <a href="" class="header__notify-link">
-                                            <img src="https://product.hstatic.net/1000406625/product/29e7_185c989a3b654eb5b39a559bb9048d11_d6e5c46fefaf4de182aeca5a2406ecb2_2a948f8a4b724185bc11e0c9008de5eb_master.jpg" alt="" class="header__notify-img">
+                                            <img src="./assets/imgs/Apple/1/1.jpg" alt="" class="header__notify-img">
                                             <div class="header__notify-info">
                                                 <span class="header__notify-name">Giày Adidas chính hãng </span>
                                                 <span class="header__notify-desc">Mô tả Giày Adidas chính hãng</span>
@@ -82,7 +82,7 @@
                                     </li>
                                     <li class="header__notify-item">
                                         <a href="" class="header__notify-link">
-                                            <img src="https://product.hstatic.net/1000406625/product/29e7_185c989a3b654eb5b39a559bb9048d11_d6e5c46fefaf4de182aeca5a2406ecb2_2a948f8a4b724185bc11e0c9008de5eb_master.jpg" alt="" class="header__notify-img">
+                                            <img src="./assets/imgs/Apple/1/2.jpg" alt="" class="header__notify-img">
                                             <div class="header__notify-info">
                                                 <span class="header__notify-name">Giày Adidas chính hãng</span>
                                                 <span class="header__notify-desc">Mô tả Giày Adidas chính hãng</span>
@@ -198,7 +198,7 @@
                                             <span class="header__cart-number">0</span>
                                             <div style="width: 400px; height: 330px" class="header__cart-list">
                                                 <!-- No cart: header__cart-list--no-cart -->
-                                                <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/9bdd8040b334d31946f49e36beaf32db.png" alt="" class="header__no-cart-img">
+                                                <img src="" alt="" class="header__no-cart-img">
                                                 <span class="header__no-cart-tittle">
                                                 Đăng nhập để xem giỏ hàng bạn nhé!
                                                 </span>
@@ -208,7 +208,7 @@
                                             <span class="header__cart-number">0</span>
                                             <div style="width: 400px; height: 330px" class="header__cart-list">
                                                 <!-- No cart: header__cart-list--no-cart -->
-                                                <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/9bdd8040b334d31946f49e36beaf32db.png" alt="" class="header__no-cart-img">
+                                                <img src="" alt="" class="header__no-cart-img">
                                                 <span class="header__no-cart-tittle">
                                                 Chưa có sản phẩm
                                                 </span>

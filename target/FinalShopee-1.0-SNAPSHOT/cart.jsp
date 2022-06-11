@@ -300,7 +300,8 @@
         integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" 
         crossorigin="anonymous" referrerpolicy="no-referrer">
     </script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<%--    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>--%>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     
     <script>

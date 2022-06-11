@@ -1,6 +1,7 @@
 package controller;
 
 
+import Service.HttpService;
 import model.PaginationUtil;
 import model.ProductUtil;
 import entity.ManufacturersEntity;
@@ -8,6 +9,7 @@ import entity.ProductsEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +21,9 @@ import java.util.List;
 public class HomeProduct extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected  void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
 
         PaginationUtil paUtil = new PaginationUtil();
         ProductUtil pUtil = new ProductUtil();
@@ -46,6 +49,14 @@ public class HomeProduct extends HttpServlet {
         request.setAttribute("countPage", countPage);
         request.setAttribute("tagPageTemp",1);
 
+//        Cookie cookie[] = request.getCookies();
+//        if (cookie.length > 0) {
+//            for (Cookie c : cookie) {
+//                if (c.getName().equals("JSESSIONID")) {
+//                    HttpService.addCookie(response, c, "Strict");
+//                }
+//            }
+//        }
         request.getRequestDispatcher("/home.jsp").forward(request, response);
     }
 

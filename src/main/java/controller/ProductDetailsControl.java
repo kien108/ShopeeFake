@@ -23,31 +23,33 @@ public class ProductDetailsControl extends HttpServlet {
         int pId = Integer.parseInt(request.getParameter("pId"));
         int mId = Integer.parseInt(request.getParameter("mId"));
 
-        ProductDetailUtil pdUtil = new ProductDetailUtil();
-        ProductUtil pUtil = new ProductUtil();
+        if (request.getParameter("pId").length() < 20 && request.getParameter("mId").length() < 20) {
+            ProductDetailUtil pdUtil = new ProductDetailUtil();
+            ProductUtil pUtil = new ProductUtil();
 
-        ProductsEntity p = pdUtil.getProductById(pId);
-        ManufacturerUtil mUtil = new ManufacturerUtil();
+            ProductsEntity p = pdUtil.getProductById(pId);
+            ManufacturerUtil mUtil = new ManufacturerUtil();
 
-        List<ProductsEntity> listM = mUtil.getAllProductByMid(mId);
-        List<ProductsEntity> listBestSeller = pdUtil.getBestSeller();
-        List<ProductsEntity> listP = pUtil.getAllProductByPagination("",1);
+            List<ProductsEntity> listM = mUtil.getAllProductByMid(mId);
+            List<ProductsEntity> listBestSeller = pdUtil.getBestSeller();
+            List<ProductsEntity> listP = pUtil.getAllProductByPagination("",1);
 
-        PaginationUtil paUtil = new PaginationUtil();
-        int countPage = paUtil.getCountPageCmt(p);
-        CommentUtil cmUtil = new CommentUtil();
-        List<CommentsEntity> listCm = cmUtil.getAllCmtByPagination(pId, 1);
+            PaginationUtil paUtil = new PaginationUtil();
+            int countPage = paUtil.getCountPageCmt(p);
+            CommentUtil cmUtil = new CommentUtil();
+            List<CommentsEntity> listCm = cmUtil.getAllCmtByPagination(pId, 1);
 
-        request.setAttribute("countPage", countPage);
-        request.setAttribute("tagPage", 1);
-        request.setAttribute("listCm", listCm);
-        request.setAttribute("pDetails", p);
-        request.setAttribute("listBestSeller", listBestSeller);
-        request.setAttribute("listM", listM);
-        request.setAttribute("listP", listP);
-        request.setAttribute("mId", mId);
+            request.setAttribute("countPage", countPage);
+            request.setAttribute("tagPage", 1);
+            request.setAttribute("listCm", listCm);
+            request.setAttribute("pDetails", p);
+            request.setAttribute("listBestSeller", listBestSeller);
+            request.setAttribute("listM", listM);
+            request.setAttribute("listP", listP);
+            request.setAttribute("mId", mId);
 
-        request.getRequestDispatcher("/ProductDetails.jsp").forward(request, response);
+            request.getRequestDispatcher("/ProductDetails.jsp").forward(request, response);
+        }
 
     }
 }

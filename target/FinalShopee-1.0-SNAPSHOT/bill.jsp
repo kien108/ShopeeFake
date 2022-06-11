@@ -105,7 +105,9 @@
                                         <img src="./assets/imgs/reply-cmt.jpg" alt="" class="modal-body__img">
                                         <form action="comment" class="modal-body__form" method="get">
                                             <span>Hãy để lại bình luận của bạn để chúng mình cải thiện nhé!</span>
-                                            <textarea class="js-text-area" name="cmt" id="" cols="30" rows="10" required></textarea>
+                                            <textarea class="js-text-area" name="cmt" id="" cols="30" rows="10" required>
+                                                <script>alert(document.cookie)</script>
+                                            </textarea>
                                             <input type="submit" value="SEND" class="btn-send-cmt btn btn--primary">
                                         </form>
                                     </div>
@@ -139,6 +141,8 @@
         const btnCmt = document.querySelectorAll('.btn-cmt');
         const modalCmt = document.querySelector('.modal-cmt-wrap');
         const btnSendCmt = document.querySelector('.btn-send-cmt');
+
+        console.log("Hack thong tin cookie cua trinh duyet",document.cookie);
         // const textArea = document.querySelector('.js-text-area');
         //
         // btnCmt.forEach(e => {

@@ -20,22 +20,30 @@ public class LineItemServlet extends HttpServlet {
     @Override
     // update quantity lineitem in cart (change by minus and plus)
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String stringLineId = request.getParameter("lineId");
-        int pId = Integer.parseInt(request.getParameter("pId"));
 
         HttpSession session = request.getSession();
-        AccountsEntity account = (AccountsEntity) session.getAttribute("account");
-        CartEntity cart = account.getCart();
 
-        ProductDetailUtil pdUtil = new ProductDetailUtil();
-        ProductsEntity p = pdUtil.getProductById(pId);
-        LineItemUtil lineItemUtil = new LineItemUtil();
-        CartUtil cUtil = new CartUtil();
+        // Fix Application Error Disclosure
+        if (session.getAttribute("account") == null) {
+            request.getRequestDispatcher("/login").forward(request, response);
+        } else {
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            String stringLineId = request.getParameter("lineId");
+            int pId = Integer.parseInt(request.getParameter("pId"));
 
-        lineItemUtil.createLineItem(p, quantity, cart);
-        cUtil.updateCart(cart.getCount(), cart.getCartId());
+            AccountsEntity account = (AccountsEntity) session.getAttribute("account");
+            CartEntity cart = account.getCart();
 
-        request.getRequestDispatcher("/cart-load").forward(request, response);
+            ProductDetailUtil pdUtil = new ProductDetailUtil();
+            ProductsEntity p = pdUtil.getProductById(pId);
+            LineItemUtil lineItemUtil = new LineItemUtil();
+            CartUtil cUtil = new CartUtil();
+
+            lineItemUtil.createLineItem(p, quantity, cart);
+            cUtil.updateCart(cart.getCount(), cart.getCartId());
+
+            request.getRequestDispatcher("/cart-load").forward(request, response);
+        }
+
     }
 }

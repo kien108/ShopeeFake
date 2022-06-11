@@ -33,7 +33,7 @@
 
 <%--    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/JS/main.js"></script>--%>
 <%--    <script src="<c:url value="/assets/JS/main.js" />"></script>--%>
-    <script type="text/javascript">
+    <script type="text/javascript" nonce="rAnd0m">
         <%@include file="/assets/JS/main.js" %>
     </script>
 </head>
@@ -415,19 +415,19 @@
     <jsp:include page="footer.jsp"></jsp:include>
     <!-- Slider -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    <script nonce="rAnd0m" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer">
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    <script nonce="rAnd0m" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
             integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
             crossorigin="anonymous" referrerpolicy="no-referrer">
     </script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="slick/slick.min.js"></script>
+<%--    <script nonce="rAnd0m" type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>--%>
+    <script nonce="rAnd0m" type="text/javascript" src="slick/slick.min.js"></script>
     
-    <script>
+    <script nonce="rAnd0m">
         $('.slick1').slick({
             dots: true,
             infinite: false,
@@ -445,7 +445,7 @@
         });
     </script>
 
-    <script>
+    <script nonce="rAnd0m">
         // Click img
         const productListImg = document.querySelectorAll('.product__list-img');
         const productImg = document.querySelector('.product__img');
@@ -458,7 +458,7 @@
         });
     </script>
 
-    <script>
+    <script nonce="rAnd0m">
         // Click filter
         const listFilters = document.querySelectorAll('.product__rating-overview-filter');
 
@@ -475,7 +475,7 @@
         })
     </script>
 
-    <script>
+    <script nonce="rAnd0m">
         // Change quantity
 
         const plus = document.querySelector('.plus');
@@ -493,7 +493,7 @@
         })
     </script>
 
-    <script>
+    <script nonce="rAnd0m">
         // Zoom img
         const screenImg = document.querySelector('.product__img-wrap');
         console.log(screenImg);
@@ -530,7 +530,7 @@
         })
     </script>
 
-    <script>
+    <script nonce="rAnd0m">
         // Add to cart
         const btnAdd = document.querySelector('.btn__add');
         const modal1 = document.querySelector('.modal__add-to-cart');
@@ -547,7 +547,7 @@
         })
     </script>
 
-    <script>
+    <script nonce="rAnd0m">
         document.addEventListener("DOMContentLoaded", function (event) {
             var scrollpos = sessionStorage.getItem('scrollpos');
             if (scrollpos) {

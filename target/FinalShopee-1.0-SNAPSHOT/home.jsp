@@ -28,6 +28,9 @@
     </style>
     <link rel="stylesheet" href="./assets/css/responsive.css">
 
+<%--    <script src="https://carousel/1.2.3/min.js" ></script>--%>
+
+
 </head>
 <body onclick="">
     <div class="app">
@@ -206,63 +209,27 @@
         <jsp:include page="footer.jsp"></jsp:include>
     </div>
 
-    <!-- Modal sign-up, sign-in is here -->
 
-    <!-- <div class="modal js-modal">
-        <div class="modal__overlay js-modal__overlay"></div>
-        <div class="modal_body">
-            
-            <div class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <h3 class="auth-form__heading">Đăng ký</h3>
-                        <span class="auth-form__switch-btn">Đăng nhập</span>
-                    </div>
-                    <div class="auth-form__form">
-                        <div class="auth-form__group">
-                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu của bạn">
-                        </div>
-                    </div>
-
-                    <div class="auth-form-aside">
-                        <p class="auth-form__policy-text">
-                            Bằng việt đăng ký, bạn đồng ý với Shoppe về
-                            <a href="" class="auth-form__policy-link">Điều khoản dịch vụ</a> &
-                            <a href="" class="auth-form__policy-link">Chính sách bảo mật</a>
-                        </p>
-                    </div>
-
-                    <div class="auth-form__controls">
-                        <button class="btn auth-form__controls-back btn--normal js-closed-modal">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG KÝ</button>
-                    </div>
-                </div>
-
-                <div class="auth-form__socials">
-                    <a href="" class="auth-form__socials--facebook btn btn--with-icon btn--size-s">
-                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
-                        Kết nối với facebook
-                    </a>
-                    <a href="" class="auth-form__socials--google btn btn--with-icon btn--size-s">
-                        <i class="auth-form__socials-icon fab fa-google-plus-g"></i>
-                        Kết nối với google
-                    </a>
-                    
-                </div>
-            </div>
-
-    
-        </div>
-    </div>  -->
     <script>
         //  Category active
+
         const listCategories = document.querySelectorAll('.category-item');
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
 
         function RemoveCategoryActive() {
             listCategories.forEach(element => {
