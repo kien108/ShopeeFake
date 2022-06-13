@@ -20,15 +20,17 @@ public class BillServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HistoryUtil hUtil = new HistoryUtil();
         HttpSession session = request.getSession();
-        AccountsEntity account = (AccountsEntity) session.getAttribute("account");
-        String username = account.getUsername();
-        if (account == null) {
+
+        // Fix Information Disclosure - Debug Error Messages
+        if (session.getAttribute("account") == null) {
             session.setAttribute("login-post", 1);
             request.getRequestDispatcher("/login").forward(request, response);
         }
         else {
+            HistoryUtil hUtil = new HistoryUtil();
+            AccountsEntity account = (AccountsEntity) session.getAttribute("account");
+            String username = account.getUsername();
             List<LineItem> listL = hUtil.getListLineItemByPagination(account.getAccountId(), 1);
             PaginationUtil pUtil = new PaginationUtil();
             int countPage = pUtil.getCountPageBill(account.getUsername());

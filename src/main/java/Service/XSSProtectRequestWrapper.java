@@ -60,7 +60,7 @@ public class XSSProtectRequestWrapper extends HttpServletRequestWrapper {
         parameter = parameter.replace("<", "&lt;");
         parameter = parameter.replace(">", "&gt;");
         parameter = parameter.replace("\"", "&quot;");
-        parameter = parameter.replace("'", "&apos;");
+        parameter = parameter.replace("'", "&apos;");   
         return parameter;
     }
 }

@@ -17,75 +17,94 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
+        // Lấy CSRF từ cookie
+        String csrfCookie = null;
+        for (Cookie cookie : request.getCookies()) {
+            if (cookie.getName().equals("csrfToken")) {
+                csrfCookie = cookie.getValue();
+                break;
+            }
+        }
 
-        if (session.getAttribute("login-post") == null) {  // login-post == null => login = nut login
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String remember = request.getParameter("remember");
+        // Lấy giá trị CSRF từ form login
+        String csrfField = request.getParameter("csrfToken");
 
-            AccountUtil accUtil = new AccountUtil();
-            AccountsEntity account = new AccountsEntity();
+        // Kiểm tra giá trị CSRF từ cookie và form
+        if (csrfCookie != null || csrfField != null || csrfCookie.equals(csrfField)) {
+            // Thực thi request
+            HttpSession session = request.getSession();
 
-            int tagLogin = 0;
-            if (accUtil.checkLogin(username, password)) {
-                account = accUtil.getAccount(username);
-                tagLogin = 1;
+            if (session.getAttribute("login-post") == null) {  // login-post == null => login = nut login
+                String username = request.getParameter("username");
+                String password = request.getParameter("password");
+                String remember = request.getParameter("remember");
 
-                if (session.getAttribute("account") == null) {
-                    session.setAttribute("account", account);
+                AccountUtil accUtil = new AccountUtil();
+                AccountsEntity account = new AccountsEntity();
+
+                int tagLogin = 0;
+                if (accUtil.checkLogin(username, password)) {
+                    account = accUtil.getAccount(username);
+                    tagLogin = 1;
+
+                    if (session.getAttribute("account") == null) {
+                        session.setAttribute("account", account);
+                    }
+
+                    // Luu account len cookie
+                    Cookie u = new Cookie("username", username);
+                    Cookie p = new Cookie("password", password);
+
+                    // Gán http only để tránh truy cập cookie trái phép từ browser.
+                    u.setHttpOnly(true);
+                    p.setHttpOnly(true);
+
+                    HttpService.addCookie(response, u, "Strict");
+                    HttpService.addCookie(response, p, "Strict");
+
+
+                    u.setMaxAge(60*60*24*365);
+
+                    if (remember != null) {
+                        p.setMaxAge(60*60*24*365);
+                    }
+                    else p.setMaxAge(0);
+
+                    CartEntity cart = account.getCart();
+                    session.setAttribute("cart", cart);
+                    session.setAttribute("account",account);
+                    request.getRequestDispatcher("/home-products").forward(request, response);
                 }
 
-                // Luu account len cookie
-                Cookie u = new Cookie("username", username);
-                Cookie p = new Cookie("password", password);
-
-                // Gán http only để tránh truy cập cookie trái phép từ browser.
-                u.setHttpOnly(true);
-                p.setHttpOnly(true);
-
-
-                u.setMaxAge(60*60*24*365);
-
-                if (remember != null) {
-                    p.setMaxAge(60*60*24*365);
+                else {
+                    request.setAttribute("tagLogin", tagLogin);
+                    request.setAttribute("usernameTemp", username);
+                    request.setAttribute("passwordTemp", password);
+                    request.getRequestDispatcher("/Login.jsp").forward(request, response);
                 }
-                else p.setMaxAge(0);
-
-//                HttpService.addCookie(response, u, "Strict");
-//                HttpService.addCookie(response, p, "Strict");
-
-
-                CartEntity cart = account.getCart();
-                session.setAttribute("cart", cart);
-                session.setAttribute("account",account);
-                request.getRequestDispatcher("/home-products").forward(request, response);
             }
 
+            // Login tu cart = do post
             else {
-                request.setAttribute("tagLogin", tagLogin);
-                request.setAttribute("usernameTemp", username);
-                request.setAttribute("passwordTemp", password);
+                session.removeAttribute("login-post");
+                Cookie arr[] = request.getCookies();
+                if (arr != null) {
+                    for(Cookie c : arr) {
+                        if (c.getName().equals("username")) {
+                            request.setAttribute("username", c.getValue());
+                        }
+                        if (c.getName().equals("password")) {
+                            request.setAttribute("password", c.getValue());
+                        }
+                    }
+                }
                 request.getRequestDispatcher("/Login.jsp").forward(request, response);
             }
+        } else {
+            request.getRequestDispatcher("/404Page.jsp").forward(request, response);
         }
 
-        // Login tu cart = do post
-        else {
-            session.removeAttribute("login-post");
-            Cookie arr[] = request.getCookies();
-            if (arr != null) {
-                for(Cookie c : arr) {
-                    if (c.getName().equals("username")) {
-                        request.setAttribute("username", c.getValue());
-                    }
-                    if (c.getName().equals("password")) {
-                        request.setAttribute("password", c.getValue());
-                    }
-                }
-            }
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
-        }
+
     }
 
     @Override

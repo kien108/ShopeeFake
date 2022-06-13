@@ -1,3 +1,5 @@
+<%@ page import="Service.CSRF" %>
+<%@ page import="Service.HttpService" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -27,15 +29,21 @@
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/css/debug.css">
     <link rel="stylesheet" href="./assets/css/productdetails.css">
-<%--    <style>--%>
-<%--        <%@include file="./assets/css/productdetails.css"%>--%>
-<%--    </style>--%>
 
-<%--    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/JS/main.js"></script>--%>
-<%--    <script src="<c:url value="/assets/JS/main.js" />"></script>--%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js" integrity="sha512-QDsjSX1mStBIAnNXx31dyvw4wVdHjonOwrkaIhpiIlzqGUCdsI62MwQtHpJF+Npy2SmSlGSROoNWQCOFpqbsOg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" nonce="rAnd0m">
         <%@include file="/assets/JS/main.js" %>
     </script>
+
+    <%
+        // generate a random CSRF token
+        String csrfToken = CSRF.getToken();
+
+        // place the CSRF token in a cookie
+        javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("csrfToken", csrfToken);
+        cookie.setHttpOnly(true);
+        HttpService.addCookie(response, cookie, "Strict");
+    %>
 </head>
 <body>
     <!-- Header is here! -->
@@ -108,6 +116,7 @@
 
                     <div class="product__quantity-input">
                         <form action="cart" method="post">
+                            <input type="hidden" name="csrfToken" value="<%= csrfToken %>"/>
                             <div class="flex">
                                 <input type="hidden" name="productId" value="${pDetails.productId}">
                                 <span class="product__quantity-title">Số Lượng</span>

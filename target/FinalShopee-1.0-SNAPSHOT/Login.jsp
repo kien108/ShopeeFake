@@ -1,3 +1,5 @@
+<%@ page import="Service.CSRF" %>
+<%@ page import="Service.HttpService" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
@@ -11,6 +13,17 @@
     <link rel="stylesheet" href="./assets/css/debug2.css">
     <link rel="stylesheet" href="./assets/css/login.css">
     <title>Document</title>
+
+    <%
+        // generate a random CSRF token
+        String csrfToken = CSRF.getToken();
+
+        // place the CSRF token in a cookie
+        javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("csrfToken", csrfToken);
+        cookie.setHttpOnly(true);
+        HttpService.addCookie(response, cookie, "Strict");
+    %>
+
 </head>
 <body>
     <header class="header">
@@ -33,11 +46,12 @@
     <section class="content">
         <div class="content-container">
             <form action="login" class="form" method="post">
+                <input type="hidden" name="csrfToken" value="<%= csrfToken %>"/>
                 <h3 class="form__title">Đăng Nhập</h3>
 
                <c:if test="${tagLogin == null}">
-                   <input value="${username}" type="text" name="username"  class="form__username" placeholder="Username">
-                   <input value="${password}" type="password" name="password" class="form__password" placeholder="Password">
+                   <input required value="${username}" type="text" name="username"  class="form__username" placeholder="Username">
+                   <input required value="${password}" type="password" name="password" class="form__password" placeholder="Password">
                    <div class="flex">
                        <input checked="checked" type="checkbox" value="1" name="remember"> <span>Nhớ mật khẩu</span>
                    </div>

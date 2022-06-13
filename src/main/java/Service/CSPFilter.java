@@ -50,7 +50,8 @@ public class CSPFilter implements Filter {
         cspPolicies.add("script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
                 "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js " +
                 "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js " +
-                "http://code.jquery.com/jquery-migrate-1.2.1.min.js ");
+                "http://code.jquery.com/jquery-migrate-1.2.1.min.js " +
+                "https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js");
 
         // Cấu hình script cho trình duyệt Mozilla
         if (INCLUDE_MOZILLA_CSP_DIRECTIVES) {

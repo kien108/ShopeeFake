@@ -1,3 +1,0 @@
-<Context>
-    <CookieProcessor sameSiteCookies="Strict" />
-</Context>

@@ -1,3 +1,5 @@
+<%@ page import="Service.CSRF" %>
+<%@ page import="Service.HttpService" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
@@ -11,6 +13,17 @@
     <link rel="stylesheet" href="./assets/css/debug2.css">
     <link rel="stylesheet" href="./assets/css/register.css">
     <title>Document</title>
+
+    <%
+        // generate a random CSRF token
+        String csrfToken = CSRF.getToken();
+
+        // place the CSRF token in a cookie
+        javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("csrfToken", csrfToken);
+        cookie.setHttpOnly(true);
+        HttpService.addCookie(response, cookie, "Strict");
+    %>
+
 </head>
 <body>
     <header class="header">
@@ -34,12 +47,14 @@
         <div class="content-container">
 
             <h1>${a}</h1>
-            <form action="register" class="form" method="get">
+            <form action="register" class="form" method="post">
+                <input type="hidden" name="csrfToken" value="<%= csrfToken %>"/>
+
                 <h3 class="form__title">Đăng Ký</h3>
 
-                <input type="text" name="username" id="" class="form__username" placeholder="Username" value="${username}">
-                <input type="password" name="password" id="" class="form__password" placeholder="Password" value="${password}">
-                <input type="password" name="password_confirm" id="" class="form__password-confirm"
+                <input required type="text" name="username" id="" class="form__username" placeholder="Username" value="${username}" pattern="[A-Za-z0-9]+">
+                <input required type="password" name="password" id="" class="form__password" placeholder="Password" value="${password}">
+                <input required type="password" name="password_confirm" id="" class="form__password-confirm"
                        placeholder="Nhập lại mật khẩu" value="${password_confirm}">
 
                 <c:if test = "${checkPass == 0}">

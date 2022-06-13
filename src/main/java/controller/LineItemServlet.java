@@ -27,22 +27,29 @@ public class LineItemServlet extends HttpServlet {
         if (session.getAttribute("account") == null) {
             request.getRequestDispatcher("/login").forward(request, response);
         } else {
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-            String stringLineId = request.getParameter("lineId");
-            int pId = Integer.parseInt(request.getParameter("pId"));
+            if (request.getParameter("quantity").length() < 20 && request.getParameter("pId").length() < 20) {
+                try {
+                    int quantity = Integer.parseInt(request.getParameter("quantity"));
+                    int pId = Integer.parseInt(request.getParameter("pId"));
 
-            AccountsEntity account = (AccountsEntity) session.getAttribute("account");
-            CartEntity cart = account.getCart();
+                    AccountsEntity account = (AccountsEntity) session.getAttribute("account");
+                    CartEntity cart = account.getCart();
 
-            ProductDetailUtil pdUtil = new ProductDetailUtil();
-            ProductsEntity p = pdUtil.getProductById(pId);
-            LineItemUtil lineItemUtil = new LineItemUtil();
-            CartUtil cUtil = new CartUtil();
+                    ProductDetailUtil pdUtil = new ProductDetailUtil();
+                    ProductsEntity p = pdUtil.getProductById(pId);
+                    LineItemUtil lineItemUtil = new LineItemUtil();
+                    CartUtil cUtil = new CartUtil();
 
-            lineItemUtil.createLineItem(p, quantity, cart);
-            cUtil.updateCart(cart.getCount(), cart.getCartId());
+                    lineItemUtil.createLineItem(p, quantity, cart);
+                    cUtil.updateCart(cart.getCount(), cart.getCartId());
 
-            request.getRequestDispatcher("/cart-load").forward(request, response);
+                    request.getRequestDispatcher("/cart-load").forward(request, response);
+                } catch (Error error) {
+                    request.getRequestDispatcher("/404Page.jsp").forward(request, response);
+                }
+            } else {
+                request.getRequestDispatcher("/404Page.jsp").forward(request, response);
+            }
         }
 
     }

@@ -21,21 +21,31 @@ public class Manufacturer extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int mId = Integer.parseInt(request.getParameter("mID"));
+        if (request.getParameter("mID") != null && request.getParameter("mID").length() < 20) {
+            try {
+                int mId = Integer.parseInt(request.getParameter("mID"));
 
-        ProductUtil pUtil = new ProductUtil();
-        ManufacturerUtil mUtil = new ManufacturerUtil();
+                ProductUtil pUtil = new ProductUtil();
+                ManufacturerUtil mUtil = new ManufacturerUtil();
 
-        List<ProductsEntity> listP = mUtil.getAllProductByMid(mId);
-        List<ManufacturersEntity> listM = pUtil.getAllManufacturers();
+                List<ProductsEntity> listP = mUtil.getAllProductByMid(mId);
+                List<ManufacturersEntity> listM = pUtil.getAllManufacturers();
 
-        request.setAttribute("listM", listM);
-        request.setAttribute("countPage", 1);
-        request.setAttribute("tagPageTemp", 1);
-        request.setAttribute("listP",listP);
-        request.setAttribute("tagM", mId);
-        request.setAttribute("tagMTemp", -1);
+                request.setAttribute("listM", listM);
+                request.setAttribute("countPage", 1);
+                request.setAttribute("tagPageTemp", 1);
+                request.setAttribute("listP", listP);
+                request.setAttribute("tagM", mId);
+                request.setAttribute("tagMTemp", -1);
 
-        request.getRequestDispatcher("/home.jsp").forward(request, response);
+                request.getRequestDispatcher("/home.jsp").forward(request, response);
+            } catch (Error e) {
+                request.getRequestDispatcher("/404Page.jsp").forward(request, response);
+
+            }
+        } else {
+            request.getRequestDispatcher("/404Page.jsp").forward(request, response);
+        }
+
     }
 }
